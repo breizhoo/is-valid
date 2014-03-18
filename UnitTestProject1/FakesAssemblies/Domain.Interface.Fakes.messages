@@ -1,0 +1,9 @@
+C:\Users\Breizhoo\documents\visual studio 2012\Projects\ClassLibrary1\UnitTestProject1\Fakes\Domain.Interface.fakes : warning : Cannot generate shim for Domain.Interface.IConfigFile: type is an interface.
+C:\Users\Breizhoo\documents\visual studio 2012\Projects\ClassLibrary1\UnitTestProject1\Fakes\Domain.Interface.fakes : warning : Cannot generate shim for Domain.Interface.IConfigParseur: type is an interface.
+C:\Users\Breizhoo\documents\visual studio 2012\Projects\ClassLibrary1\UnitTestProject1\Fakes\Domain.Interface.fakes : warning : Cannot generate shim for Domain.Interface.IConfigParseurConnectionString: type is an interface.
+C:\Users\Breizhoo\documents\visual studio 2012\Projects\ClassLibrary1\UnitTestProject1\Fakes\Domain.Interface.fakes : warning : Cannot generate shim for Domain.Interface.IConfigTransform: type is an interface.
+C:\Users\Breizhoo\documents\visual studio 2012\Projects\ClassLibrary1\UnitTestProject1\Fakes\Domain.Interface.fakes : warning : Cannot generate shim for Domain.Interface.IConfigTransformOutput: type is an interface.
+C:\Users\Breizhoo\documents\visual studio 2012\Projects\ClassLibrary1\UnitTestProject1\Fakes\Domain.Interface.fakes : warning : Cannot generate shim for Domain.Interface.ICsprojFinder: type is an interface.
+C:\Users\Breizhoo\documents\visual studio 2012\Projects\ClassLibrary1\UnitTestProject1\Fakes\Domain.Interface.fakes : warning : Cannot generate shim for Domain.Interface.ICsprojFinderOutput: type is an interface.
+C:\Users\Breizhoo\documents\visual studio 2012\Projects\ClassLibrary1\UnitTestProject1\Fakes\Domain.Interface.fakes : warning : Cannot generate shim for Domain.Interface.ICsprojParseur: type is an interface.
+C:\Users\Breizhoo\documents\visual studio 2012\Projects\ClassLibrary1\UnitTestProject1\Fakes\Domain.Interface.fakes : warning : Cannot generate shim for Domain.Interface.ICsprojParseurOutput: type is an interface.

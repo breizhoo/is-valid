@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2B399CDA-9C11-4CFC-9927-A1C2704316E2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Domain</RootNamespace>
+    <AssemblyName>Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="Microsoft.Web.XmlTransform">
+      <HintPath>..\packages\Microsoft.Web.Xdt.1.0.0\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Logging">
+      <HintPath>..\packages\Ninject.Extensions.Logging.3.0.1.0\lib\net45-full\Ninject.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Implementation\ConfigFileTransfomed.cs" />
+    <Compile Include="Implementation\ConfigFindExecutor.cs" />
+    <Compile Include="Implementation\ConfigFile.cs" />
+    <Compile Include="Implementation\ConfigParseur.cs" />
+    <Compile Include="Implementation\ConfigTransform.cs" />
+    <Compile Include="Implementation\ConnectionString.cs" />
+    <Compile Include="Interface\ConnectionStringValidatoName.cs" />
+    <Compile Include="Implementation\ConnectionStringValidator.cs" />
+    <Compile Include="Implementation\ConfigFinder.cs" />
+    <Compile Include="Implementation\CsprojFinder.cs" />
+    <Compile Include="Implementation\CsprojParseur.cs" />
+    <Compile Include="Interface\ConnectionStringItemName.cs" />
+    <Compile Include="Interface\IConfigFileTransfomed.cs" />
+    <Compile Include="Interface\IConfigFindExecutor.cs" />
+    <Compile Include="Interface\IConfigParseurExecutor.cs" />
+    <Compile Include="Interface\IConnectionStringItemForValidator.cs" />
+    <Compile Include="Interface\IConnectionStringItemValidator.cs" />
+    <Compile Include="Interface\IConnectionStringValidator.cs" />
+    <Compile Include="Interface\ICsprojExecutor.cs" />
+    <Compile Include="Interface\IMessagingExecutor.cs" />
+    <Compile Include="Implementation\Messaging.cs" />
+    <Compile Include="Implementation\MessagingExecutor.cs" />
+    <Compile Include="Interface\IConnectionStringItem.cs" />
+    <Compile Include="Interface\IConfigFile.cs" />
+    <Compile Include="Interface\IConfigParseur.cs" />
+    <Compile Include="Interface\IConfigParseurConnectionString.cs" />
+    <Compile Include="Interface\IConfigTransform.cs" />
+    <Compile Include="Interface\IConfigTransformOutput.cs" />
+    <Compile Include="Interface\ICsprojFinder.cs" />
+    <Compile Include="Interface\ICsprojFinderOutput.cs" />
+    <Compile Include="Interface\ICsprojParseur.cs" />
+    <Compile Include="Interface\ICsprojParseurOutput.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

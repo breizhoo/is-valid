@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ClassLibrary1.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:ClassLibrary1.Fakes.ShimConfigFile">
+            <summary>Shim type of ClassLibrary1.ConfigFile</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.ShimConfigFile.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.ShimConfigFile.#ctor(ClassLibrary1.ConfigFile)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.ShimConfigFile.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.ShimConfigFile.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:ClassLibrary1.Fakes.ShimConfigFile.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:ClassLibrary1.Fakes.ShimConfigFile.Constructor">
+            <summary>Sets the shim of ConfigFile.ConfigFile()</summary>
+        </member>
+        <member name="P:ClassLibrary1.Fakes.ShimConfigFile.SourceFileGet">
+            <summary>Sets the shim of ConfigFile.get_SourceFile()</summary>
+        </member>
+        <member name="P:ClassLibrary1.Fakes.ShimConfigFile.SourceFileSetFileInfo">
+            <summary>Sets the shim of ConfigFile.set_SourceFile(FileInfo value)</summary>
+        </member>
+        <member name="P:ClassLibrary1.Fakes.ShimConfigFile.TransformFileGet">
+            <summary>Sets the shim of ConfigFile.get_TransformFile()</summary>
+        </member>
+        <member name="P:ClassLibrary1.Fakes.ShimConfigFile.TransformFileSetFileInfo">
+            <summary>Sets the shim of ConfigFile.set_TransformFile(FileInfo value)</summary>
+        </member>
+        <member name="T:ClassLibrary1.Fakes.ShimConfigFile.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:ClassLibrary1.Fakes.ShimConfigFile.AllInstances.SourceFileGet">
+            <summary>Sets the shim of ConfigFile.get_SourceFile()</summary>
+        </member>
+        <member name="P:ClassLibrary1.Fakes.ShimConfigFile.AllInstances.SourceFileSetFileInfo">
+            <summary>Sets the shim of ConfigFile.set_SourceFile(FileInfo value)</summary>
+        </member>
+        <member name="P:ClassLibrary1.Fakes.ShimConfigFile.AllInstances.TransformFileGet">
+            <summary>Sets the shim of ConfigFile.get_TransformFile()</summary>
+        </member>
+        <member name="P:ClassLibrary1.Fakes.ShimConfigFile.AllInstances.TransformFileSetFileInfo">
+            <summary>Sets the shim of ConfigFile.set_TransformFile(FileInfo value)</summary>
+        </member>
+        <member name="T:ClassLibrary1.Fakes.StubConfigFile">
+            <summary>Stub type of ClassLibrary1.ConfigFile</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubConfigFile.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubConfigFile.InitializeStub">
+            <summary>Initializes a new instance of type StubConfigFile</summary>
+        </member>
+        <member name="P:ClassLibrary1.Fakes.StubConfigFile.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:ClassLibrary1.Fakes.StubConfigFile.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:ClassLibrary1.Fakes.StubConfigFile.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:ClassLibrary1.Fakes.StubIConfigParseur">
+            <summary>Stub type of ClassLibrary1.IConfigParseur</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubIConfigParseur.#ctor">
+            <summary>Initializes a new instance of type StubIConfigParseur</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubIConfigParseur.cl1::ClassLibrary1#IConfigParseur#Parse(System.IO.FileInfo,System.IO.FileInfo)">
+            <summary>Sets the stub of IConfigParseur.Parse(FileInfo configFile, FileInfo originPath)</summary>
+        </member>
+        <member name="F:ClassLibrary1.Fakes.StubIConfigParseur.ParseFileInfoFileInfo">
+            <summary>Sets the stub of IConfigParseur.Parse(FileInfo configFile, FileInfo originPath)</summary>
+        </member>
+        <member name="T:ClassLibrary1.Fakes.StubIConfigParseurConnectionString">
+            <summary>Stub type of ClassLibrary1.IConfigParseurConnectionString</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubIConfigParseurConnectionString.#ctor">
+            <summary>Initializes a new instance of type StubIConfigParseurConnectionString</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubIConfigParseurConnectionString.cl1::ClassLibrary1#IConfigParseurConnectionString#FindConnectionString(System.String,System.String,System.String)">
+            <summary>Sets the stub of IConfigParseurConnectionString.FindConnectionString(String name, String providerName, String connectionString)</summary>
+        </member>
+        <member name="F:ClassLibrary1.Fakes.StubIConfigParseurConnectionString.FindConnectionStringStringStringString">
+            <summary>Sets the stub of IConfigParseurConnectionString.FindConnectionString(String name, String providerName, String connectionString)</summary>
+        </member>
+        <member name="T:ClassLibrary1.Fakes.StubIConfigTransform">
+            <summary>Stub type of ClassLibrary1.IConfigTransform</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubIConfigTransform.#ctor">
+            <summary>Initializes a new instance of type StubIConfigTransform</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubIConfigTransform.cl1::ClassLibrary1#IConfigTransform#Transform(System.String,System.String,System.String)">
+            <summary>Sets the stub of IConfigTransform.Transform(String sourceFile, String transformFile, String destFile)</summary>
+        </member>
+        <member name="F:ClassLibrary1.Fakes.StubIConfigTransform.TransformStringStringString">
+            <summary>Sets the stub of IConfigTransform.Transform(String sourceFile, String transformFile, String destFile)</summary>
+        </member>
+        <member name="T:ClassLibrary1.Fakes.StubIConfigTransformOutput">
+            <summary>Stub type of ClassLibrary1.IConfigTransformOutput</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubIConfigTransformOutput.#ctor">
+            <summary>Initializes a new instance of type StubIConfigTransformOutput</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubIConfigTransformOutput.cl1::ClassLibrary1#IConfigTransformOutput#TransformedConfigFile(System.String,System.String,System.String)">
+            <summary>Sets the stub of IConfigTransformOutput.TransformedConfigFile(String sourceFile, String transformFile, String destFile)</summary>
+        </member>
+        <member name="F:ClassLibrary1.Fakes.StubIConfigTransformOutput.TransformedConfigFileStringStringString">
+            <summary>Sets the stub of IConfigTransformOutput.TransformedConfigFile(String sourceFile, String transformFile, String destFile)</summary>
+        </member>
+        <member name="T:ClassLibrary1.Fakes.StubICsprojFinder">
+            <summary>Stub type of ClassLibrary1.ICsprojFinder</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubICsprojFinder.#ctor">
+            <summary>Initializes a new instance of type StubICsprojFinder</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubICsprojFinder.cl1::ClassLibrary1#ICsprojFinder#DirSearch(System.String)">
+            <summary>Sets the stub of ICsprojFinder.DirSearch(String sDir)</summary>
+        </member>
+        <member name="F:ClassLibrary1.Fakes.StubICsprojFinder.DirSearchString">
+            <summary>Sets the stub of ICsprojFinder.DirSearch(String sDir)</summary>
+        </member>
+        <member name="T:ClassLibrary1.Fakes.StubICsprojFinderOutput">
+            <summary>Stub type of ClassLibrary1.ICsprojFinderOutput</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubICsprojFinderOutput.#ctor">
+            <summary>Initializes a new instance of type StubICsprojFinderOutput</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubICsprojFinderOutput.cl1::ClassLibrary1#ICsprojFinderOutput#FindCsproj(System.IO.FileInfo)">
+            <summary>Sets the stub of ICsprojFinderOutput.FindCsproj(FileInfo fileInfo)</summary>
+        </member>
+        <member name="F:ClassLibrary1.Fakes.StubICsprojFinderOutput.FindCsprojFileInfo">
+            <summary>Sets the stub of ICsprojFinderOutput.FindCsproj(FileInfo fileInfo)</summary>
+        </member>
+        <member name="T:ClassLibrary1.Fakes.StubICsprojParseur">
+            <summary>Stub type of ClassLibrary1.ICsprojParseur</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubICsprojParseur.#ctor">
+            <summary>Initializes a new instance of type StubICsprojParseur</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubICsprojParseur.cl1::ClassLibrary1#ICsprojParseur#Parse(System.String)">
+            <summary>Sets the stub of ICsprojParseur.Parse(String fullPathName)</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubICsprojParseur.cl1::ClassLibrary1#ICsprojParseur#ParseAsync(System.String)">
+            <summary>Sets the stub of ICsprojParseur.ParseAsync(String fullPathName)</summary>
+        </member>
+        <member name="F:ClassLibrary1.Fakes.StubICsprojParseur.ParseAsyncString">
+            <summary>Sets the stub of ICsprojParseur.ParseAsync(String fullPathName)</summary>
+        </member>
+        <member name="F:ClassLibrary1.Fakes.StubICsprojParseur.ParseString">
+            <summary>Sets the stub of ICsprojParseur.Parse(String fullPathName)</summary>
+        </member>
+        <member name="T:ClassLibrary1.Fakes.StubICsprojParseurOutput">
+            <summary>Stub type of ClassLibrary1.ICsprojParseurOutput</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubICsprojParseurOutput.#ctor">
+            <summary>Initializes a new instance of type StubICsprojParseurOutput</summary>
+        </member>
+        <member name="M:ClassLibrary1.Fakes.StubICsprojParseurOutput.cl1::ClassLibrary1#ICsprojParseurOutput#FindConfigFile(ClassLibrary1.ConfigFile)">
+            <summary>Sets the stub of ICsprojParseurOutput.FindConfigFile(ConfigFile configFile)</summary>
+        </member>
+        <member name="F:ClassLibrary1.Fakes.StubICsprojParseurOutput.FindConfigFileConfigFile">
+            <summary>Sets the stub of ICsprojParseurOutput.FindConfigFile(ConfigFile configFile)</summary>
+        </member>
+    </members>
+</doc>

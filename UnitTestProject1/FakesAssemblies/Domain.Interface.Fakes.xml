@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Domain.Interface.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:Domain.Interface.Fakes.StubIConfigFile">
+            <summary>Stub type of Domain.Interface.IConfigFile</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubIConfigFile.#ctor">
+            <summary>Initializes a new instance of type StubIConfigFile</summary>
+        </member>
+        <member name="F:Domain.Interface.Fakes.StubIConfigFile.SourceFileGet">
+            <summary>Sets the stub of IConfigFile.get_SourceFile()</summary>
+        </member>
+        <member name="F:Domain.Interface.Fakes.StubIConfigFile.TransformFileGet">
+            <summary>Sets the stub of IConfigFile.get_TransformFile()</summary>
+        </member>
+        <member name="P:Domain.Interface.Fakes.StubIConfigFile.di::Domain#Interface#IConfigFile#SourceFile">
+            <summary>Sets the stub of IConfigFile.get_SourceFile()</summary>
+        </member>
+        <member name="P:Domain.Interface.Fakes.StubIConfigFile.di::Domain#Interface#IConfigFile#TransformFile">
+            <summary>Sets the stub of IConfigFile.get_TransformFile()</summary>
+        </member>
+        <member name="T:Domain.Interface.Fakes.StubIConfigParseur">
+            <summary>Stub type of Domain.Interface.IConfigParseur</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubIConfigParseur.#ctor">
+            <summary>Initializes a new instance of type StubIConfigParseur</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubIConfigParseur.di::Domain#Interface#IConfigParseur#Parse(System.IO.FileInfo,System.IO.FileInfo)">
+            <summary>Sets the stub of IConfigParseur.Parse(FileInfo configFile, FileInfo originPath)</summary>
+        </member>
+        <member name="F:Domain.Interface.Fakes.StubIConfigParseur.ParseFileInfoFileInfo">
+            <summary>Sets the stub of IConfigParseur.Parse(FileInfo configFile, FileInfo originPath)</summary>
+        </member>
+        <member name="T:Domain.Interface.Fakes.StubIConfigParseurConnectionString">
+            <summary>Stub type of Domain.Interface.IConfigParseurConnectionString</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubIConfigParseurConnectionString.#ctor">
+            <summary>Initializes a new instance of type StubIConfigParseurConnectionString</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubIConfigParseurConnectionString.di::Domain#Interface#IConfigParseurConnectionString#FindConnectionString(System.String,System.String,System.String)">
+            <summary>Sets the stub of IConfigParseurConnectionString.FindConnectionString(String name, String providerName, String connectionString)</summary>
+        </member>
+        <member name="F:Domain.Interface.Fakes.StubIConfigParseurConnectionString.FindConnectionStringStringStringString">
+            <summary>Sets the stub of IConfigParseurConnectionString.FindConnectionString(String name, String providerName, String connectionString)</summary>
+        </member>
+        <member name="T:Domain.Interface.Fakes.StubIConfigTransform">
+            <summary>Stub type of Domain.Interface.IConfigTransform</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubIConfigTransform.#ctor">
+            <summary>Initializes a new instance of type StubIConfigTransform</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubIConfigTransform.di::Domain#Interface#IConfigTransform#Transform(System.String,System.String,System.String)">
+            <summary>Sets the stub of IConfigTransform.Transform(String sourceFile, String transformFile, String destFile)</summary>
+        </member>
+        <member name="F:Domain.Interface.Fakes.StubIConfigTransform.TransformStringStringString">
+            <summary>Sets the stub of IConfigTransform.Transform(String sourceFile, String transformFile, String destFile)</summary>
+        </member>
+        <member name="T:Domain.Interface.Fakes.StubIConfigTransformOutput">
+            <summary>Stub type of Domain.Interface.IConfigTransformOutput</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubIConfigTransformOutput.#ctor">
+            <summary>Initializes a new instance of type StubIConfigTransformOutput</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubIConfigTransformOutput.di::Domain#Interface#IConfigTransformOutput#TransformedConfigFile(System.String,System.String,System.String)">
+            <summary>Sets the stub of IConfigTransformOutput.TransformedConfigFile(String sourceFile, String transformFile, String destFile)</summary>
+        </member>
+        <member name="F:Domain.Interface.Fakes.StubIConfigTransformOutput.TransformedConfigFileStringStringString">
+            <summary>Sets the stub of IConfigTransformOutput.TransformedConfigFile(String sourceFile, String transformFile, String destFile)</summary>
+        </member>
+        <member name="T:Domain.Interface.Fakes.StubICsprojFinder">
+            <summary>Stub type of Domain.Interface.ICsprojFinder</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubICsprojFinder.#ctor">
+            <summary>Initializes a new instance of type StubICsprojFinder</summary>
+        </member>
+        <member name="F:Domain.Interface.Fakes.StubICsprojFinder.DirSearchString">
+            <summary>Sets the stub of ICsprojFinder.DirSearch(String sDir)</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubICsprojFinder.di::Domain#Interface#ICsprojFinder#DirSearch(System.String)">
+            <summary>Sets the stub of ICsprojFinder.DirSearch(String sDir)</summary>
+        </member>
+        <member name="T:Domain.Interface.Fakes.StubICsprojFinderOutput">
+            <summary>Stub type of Domain.Interface.ICsprojFinderOutput</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubICsprojFinderOutput.#ctor">
+            <summary>Initializes a new instance of type StubICsprojFinderOutput</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubICsprojFinderOutput.di::Domain#Interface#ICsprojFinderOutput#FindCsproj(System.IO.FileInfo)">
+            <summary>Sets the stub of ICsprojFinderOutput.FindCsproj(FileInfo fileInfo)</summary>
+        </member>
+        <member name="F:Domain.Interface.Fakes.StubICsprojFinderOutput.FindCsprojFileInfo">
+            <summary>Sets the stub of ICsprojFinderOutput.FindCsproj(FileInfo fileInfo)</summary>
+        </member>
+        <member name="T:Domain.Interface.Fakes.StubICsprojParseur">
+            <summary>Stub type of Domain.Interface.ICsprojParseur</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubICsprojParseur.#ctor">
+            <summary>Initializes a new instance of type StubICsprojParseur</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubICsprojParseur.di::Domain#Interface#ICsprojParseur#Parse(System.String)">
+            <summary>Sets the stub of ICsprojParseur.Parse(String fullPathName)</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubICsprojParseur.di::Domain#Interface#ICsprojParseur#ParseAsync(System.String)">
+            <summary>Sets the stub of ICsprojParseur.ParseAsync(String fullPathName)</summary>
+        </member>
+        <member name="F:Domain.Interface.Fakes.StubICsprojParseur.ParseAsyncString">
+            <summary>Sets the stub of ICsprojParseur.ParseAsync(String fullPathName)</summary>
+        </member>
+        <member name="F:Domain.Interface.Fakes.StubICsprojParseur.ParseString">
+            <summary>Sets the stub of ICsprojParseur.Parse(String fullPathName)</summary>
+        </member>
+        <member name="T:Domain.Interface.Fakes.StubICsprojParseurOutput">
+            <summary>Stub type of Domain.Interface.ICsprojParseurOutput</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubICsprojParseurOutput.#ctor">
+            <summary>Initializes a new instance of type StubICsprojParseurOutput</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubICsprojParseurOutput.di::Domain#Interface#ICsprojParseurOutput#FindConfigFile(Domain.Interface.IConfigFile)">
+            <summary>Sets the stub of ICsprojParseurOutput.FindConfigFile(IConfigFile configFile)</summary>
+        </member>
+        <member name="F:Domain.Interface.Fakes.StubICsprojParseurOutput.FindConfigFileIConfigFile">
+            <summary>Sets the stub of ICsprojParseurOutput.FindConfigFile(IConfigFile configFile)</summary>
+        </member>
+    </members>
+</doc>
