@@ -1,9 +1,7 @@
-using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
-using Domain.Implementation;
 using Domain.Interface;
 
 namespace WpfApplication
@@ -43,18 +41,16 @@ namespace WpfApplication
         public async void Launch(string directoriesSearch)
         {
             Clear();
-            await Task.Run(() => _csprojFinder.DirSearch(directoriesSearch, new ForCsProjFind(this, directoriesSearch).CsProjFind));
+            await Task.Run(() => _csprojFinder.DirSearch(directoriesSearch, new ForCsProjFind(this).CsProjFind));
         }
 
         private class ForCsProjFind
         {
             private readonly SearchConfig _searchConfig;
-            private readonly string _directoriesSearch;
 
-            public ForCsProjFind(SearchConfig searchConfig, string directoriesSearch)
+            public ForCsProjFind(SearchConfig searchConfig)
             {
                 _searchConfig = searchConfig;
-                _directoriesSearch = directoriesSearch;
             }
 
             public void CsProjFind(FileInfo fileInfo)
