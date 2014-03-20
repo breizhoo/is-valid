@@ -7,15 +7,28 @@ namespace Domain.Implementation
 {
     internal class ConnectionStringValidator
     {
-        public bool AllNameMatch(
-            IEnumerable<IConnectionStringItemForValidator> compareFrom,
-            IEnumerable<IConnectionStringItemForValidator> compareTo)
-        {
-            return compareFrom.Select(x => x.Name)
-                .Intersect(compareTo.Select(y => y.Name))
-                .Count() == compareFrom.Count();
-        }
+        ///// <summary>
+        ///// Same 
+        ///// </summary>
+        ///// <param name="compareFrom"></param>
+        ///// <param name="compareTo"></param>
+        ///// <returns></returns>
+        //public bool AllNameMatch(
+        //    IEnumerable<IConnectionStringItemForValidator> compareFrom,
+        //    IEnumerable<IConnectionStringItemForValidator> compareTo)
+        //{
+        //    return compareFrom.Select(x => x.Name)
+        //        .Intersect(compareTo.Select(y => y.Name))
+        //        .Count() == compareFrom.Count();
+        //}
 
+        /// <summary>
+        /// Check if connectionString match and return the value
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="connectionStringItem"></param>
+        /// <param name="rules"></param>
+        /// <returns></returns>
         public IEnumerable<T> IsValid<T>(
             IConnectionStringItemForValidator connectionStringItem,
             T[] rules)
@@ -26,6 +39,12 @@ namespace Domain.Implementation
                    select rule;
         }
 
+        /// <summary>
+        /// Check items.
+        /// </summary>
+        /// <param name="itemValidator"></param>
+        /// <param name="realValue"></param>
+        /// <returns></returns>
         private bool allCriteriaMatch(IConnectionStringValidator itemValidator, IConnectionStringItemForValidator realValue)
         {
             return (from val in itemValidator

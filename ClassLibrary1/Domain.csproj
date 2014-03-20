@@ -70,6 +70,7 @@
     <Compile Include="Interface\IConnectionStringItemValidator.cs" />
     <Compile Include="Interface\IConnectionStringValidator.cs" />
     <Compile Include="Interface\ICsprojExecutor.cs" />
+    <Compile Include="Interface\IMessage.cs" />
     <Compile Include="Interface\IMessagingExecutor.cs" />
     <Compile Include="Implementation\Messaging.cs" />
     <Compile Include="Implementation\MessagingExecutor.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Interface\ICsprojFinderOutput.cs" />
     <Compile Include="Interface\ICsprojParseur.cs" />
     <Compile Include="Interface\ICsprojParseurOutput.cs" />
+    <Compile Include="Interface\TypeError.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

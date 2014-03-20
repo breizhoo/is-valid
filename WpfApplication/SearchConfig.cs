@@ -21,12 +21,12 @@ namespace WpfApplication
         private readonly ICsprojParseur _csprojParseur;
         //private readonly IConfigTransform _configTransform;
         //private readonly IConfigParseur _configParseur;
-        private readonly IMessagingExecutor _message;
+        private readonly IMessagingReceiver _message;
 
         public SearchConfig(
             ICsprojFinder csprojFinder,
             ICsprojParseur csprojParseur,
-            IMessagingExecutor message)
+            IMessagingReceiver message)
             //IConfigTransform configTransform,
             //IConfigParseur configParseur)
         {

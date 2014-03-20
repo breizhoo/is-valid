@@ -12,7 +12,7 @@ namespace Domain.Interface
         /// ConfigFile and Project associed
         /// </summary>
         /// <param name="project">Project</param>
-        /// <param name="configFile">Config file</param>
-        void Execute(Project project, IEnumerable<IConfigFile> configFile);
+        /// <param name="configFiles">Config file</param>
+        void Execute(Project project, IEnumerable<IConfigFile> configFiles);
     }
 }

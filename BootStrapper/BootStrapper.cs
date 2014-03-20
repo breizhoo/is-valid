@@ -26,14 +26,13 @@ namespace BootStrapper
             IKernel kernel = new StandardKernel(settings, new INinjectModule[] { new Log4NetModule() });
 
             // Domain configuration
-            kernel.Bind<IConfigParseur>().To<ConfigParseur>();
             kernel.Bind<IConfigTransform>().To<ConfigTransform>();
             kernel.Bind<ICsprojFinder>().To<CsprojFinder>();
             kernel.Bind<ICsprojParseur>().To<CsprojParseur>();
             kernel.Bind<ICsprojExecutor>().To<ConfigFinder>();
             kernel.Bind<IConfigFindExecutor>().To<ConfigFindExecutor>();
             kernel.Bind<IConfigParseurExecutor>().To<ConfigParseur>();
-            kernel.Bind<IMessagingExecutor>().To<MessagingExecutor>().InSingletonScope();
+            kernel.Bind<IMessagingSender, IMessagingReceiver>().To<MessagingExecutor>().InSingletonScope();
 
             if (_configuration != null)
                 _configuration(kernel);

@@ -76,8 +76,6 @@ namespace Domain.Implementation
         {
             try
             {
-
-
                 var evaluatedValueMeta =
                     projectItem.DirectMetadata.FirstOrDefault(x => x.EvaluatedValue.Contains(".config"));
 
@@ -96,6 +94,9 @@ namespace Domain.Implementation
                 var realDirectory = fullTransformFile == null
                     ? projectDirectoryName
                     : Path.GetDirectoryName(fullTransformFile);
+
+                if (realDirectory == null)
+                    throw new NullReferenceException("realDirectory is null.");
 
                 return new ConfigFile
                 {

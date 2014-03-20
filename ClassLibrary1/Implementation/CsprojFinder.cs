@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Domain.Interface;
 using Ninject.Extensions.Logging;
@@ -29,11 +30,14 @@ namespace Domain.Implementation
         /// <param name="fileInfoFind">Callback</param>
         public void DirSearch(string sDir, Action<FileInfo> fileInfoFind)
         {
-            Parallel.ForEach(new DirectoryInfo(sDir)
-                .GetFiles("*.csproj", SearchOption.AllDirectories),
+            var files = new DirectoryInfo(sDir)
+                .GetFiles("*.csproj", SearchOption.AllDirectories);
+
+            _logger.Info("{0} csproj finded : {1}", files.Length, string.Join(", ", files.Select(x => x.Name)));
+
+            Parallel.ForEach(files,
                 (fileinfo) =>
                 {
-                    _logger.Info("Find file : {0}", fileinfo.Name);
                     try
                     {
                         fileInfoFind(fileinfo);

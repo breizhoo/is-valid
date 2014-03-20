@@ -1,30 +1,29 @@
-using Domain.Interface;
-
-namespace Domain.Implementation
+namespace Domain.Interface
 {
     /// <summary>
     /// Message to displayed
     /// </summary>
-    internal class Messaging: IMessage
+    public interface IMessage
     {
         /// <summary>
         /// Code of the error.
         /// </summary>
-        public int ErrorCode { get; set; }
+        int ErrorCode { get; }
 
         /// <summary>
         /// The message of the error.
         /// </summary>
-        public string Message { get; set; }
+        string Message { get; }
 
         /// <summary>
         /// Type of the error. (Info, Warn, Error)
         /// </summary>
-        public TypeError TypeError { get; set; }
+        TypeError TypeError { get; }
 
         /// <summary>
         /// Identifier of the error.
         /// </summary>
-        public string Id { get; set; }
+        string Id { get; }
+
     }
 }

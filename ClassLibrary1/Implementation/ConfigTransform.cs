@@ -1,29 +1,41 @@
 ﻿using System;
 using System.IO;
-using System.Threading.Tasks;
 using Domain.Interface;
 using Microsoft.Web.XmlTransform;
+using Ninject.Extensions.Logging;
 
 namespace Domain.Implementation
 {
+    /// <summary>
+    /// Transform a config file.
+    /// </summary>
     internal class ConfigTransform : IConfigTransform
     {
-        public Task<bool> TransformAsync(string sourceFile, string transformFile, string destFile)
+        private readonly ILogger _logger;
+
+        public ConfigTransform(ILogger logger)
         {
-            return Task.Run(() => Transform(sourceFile, transformFile, destFile));
+            _logger = logger;
         }
 
+        /// <summary>
+        /// Launch transform.
+        /// </summary>
+        /// <param name="sourceFile"></param>
+        /// <param name="transformFile"></param>
+        /// <param name="destFile"></param>
+        /// <returns></returns>
         public bool Transform(string sourceFile, string transformFile, string destFile)
         {
             if (!File.Exists(sourceFile))
             {
+                _logger.Error("The sourceFile doesn't exist");
                 return false;
-                //throw new FileNotFoundException("sourceFile doesn't exist");
             }
             if (!File.Exists(transformFile))
             {
+                _logger.Error("The transformFile doesn't exist");
                 return false;
-                //throw new FileNotFoundException("transformFile doesn't exist");
             }
 
             try
@@ -48,7 +60,7 @@ namespace Domain.Implementation
             }
             catch(Exception ex)
             {
-                //todo : put log here.
+                _logger.Error(ex, "The transformFile faild.");
                 return false;
             }
         }
