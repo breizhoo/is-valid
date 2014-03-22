@@ -208,11 +208,23 @@
         <member name="M:Domain.Interface.Fakes.StubIConnectionStringItemValidator.#ctor">
             <summary>Initialise une nouvelle instance de type StubIConnectionStringItemValidator</summary>
         </member>
+        <member name="F:Domain.Interface.Fakes.StubIConnectionStringItemValidator.ActiveGet">
+            <summary>Définit le stub de IConnectionStringItemValidator.get_Active()</summary>
+        </member>
+        <member name="F:Domain.Interface.Fakes.StubIConnectionStringItemValidator.CriteriaGet">
+            <summary>Définit le stub de IConnectionStringItemValidator.get_Criteria()</summary>
+        </member>
         <member name="F:Domain.Interface.Fakes.StubIConnectionStringItemValidator.MatchGet">
             <summary>Définit le stub de IConnectionStringItemValidator.get_Match()</summary>
         </member>
         <member name="F:Domain.Interface.Fakes.StubIConnectionStringItemValidator.RegexGet">
             <summary>Définit le stub de IConnectionStringItemValidator.get_Regex()</summary>
+        </member>
+        <member name="P:Domain.Interface.Fakes.StubIConnectionStringItemValidator.d::Domain#Interface#IConnectionStringItemValidator#Active">
+            <summary>Définit le stub de IConnectionStringItemValidator.get_Active()</summary>
+        </member>
+        <member name="P:Domain.Interface.Fakes.StubIConnectionStringItemValidator.d::Domain#Interface#IConnectionStringItemValidator#Criteria">
+            <summary>Définit le stub de IConnectionStringItemValidator.get_Criteria()</summary>
         </member>
         <member name="P:Domain.Interface.Fakes.StubIConnectionStringItemValidator.d::Domain#Interface#IConnectionStringItemValidator#Match">
             <summary>Définit le stub de IConnectionStringItemValidator.get_Match()</summary>
@@ -220,59 +232,59 @@
         <member name="P:Domain.Interface.Fakes.StubIConnectionStringItemValidator.d::Domain#Interface#IConnectionStringItemValidator#Regex">
             <summary>Définit le stub de IConnectionStringItemValidator.get_Regex()</summary>
         </member>
-        <member name="T:Domain.Interface.Fakes.StubIConnectionStringValidator">
-            <summary>Type stub de Domain.Interface.IConnectionStringValidator</summary>
+        <member name="T:Domain.Interface.Fakes.StubIConnectionStringRulesValidator">
+            <summary>Type stub de Domain.Interface.IConnectionStringRulesValidator</summary>
         </member>
-        <member name="M:Domain.Interface.Fakes.StubIConnectionStringValidator.#ctor">
-            <summary>Initialise une nouvelle instance de type StubIConnectionStringValidator</summary>
+        <member name="M:Domain.Interface.Fakes.StubIConnectionStringRulesValidator.#ctor">
+            <summary>Initialise une nouvelle instance de type StubIConnectionStringRulesValidator</summary>
         </member>
-        <member name="F:Domain.Interface.Fakes.StubIConnectionStringValidator.ConnectionStringGet">
-            <summary>Définit le stub de IConnectionStringValidator.get_ConnectionString()</summary>
+        <member name="F:Domain.Interface.Fakes.StubIConnectionStringRulesValidator.ConnectionStringGet">
+            <summary>Définit le stub de IConnectionStringRulesValidator.get_ConnectionString()</summary>
         </member>
-        <member name="F:Domain.Interface.Fakes.StubIConnectionStringValidator.FileGet">
-            <summary>Définit le stub de IConnectionStringValidator.get_File()</summary>
+        <member name="F:Domain.Interface.Fakes.StubIConnectionStringRulesValidator.FileGet">
+            <summary>Définit le stub de IConnectionStringRulesValidator.get_File()</summary>
         </member>
-        <member name="F:Domain.Interface.Fakes.StubIConnectionStringValidator.GetEnumerator">
+        <member name="F:Domain.Interface.Fakes.StubIConnectionStringRulesValidator.GetEnumerator">
             <summary>Définit le stub de IEnumerable`1.GetEnumerator()</summary>
         </member>
-        <member name="F:Domain.Interface.Fakes.StubIConnectionStringValidator.GetEnumerator01">
+        <member name="F:Domain.Interface.Fakes.StubIConnectionStringRulesValidator.GetEnumerator01">
             <summary>Définit le stub de IEnumerable.GetEnumerator()</summary>
         </member>
-        <member name="F:Domain.Interface.Fakes.StubIConnectionStringValidator.ItemGetConnectionStringValidatorName">
-            <summary>Définit le stub de IConnectionStringValidator.get_Item(ConnectionStringValidatorName name)</summary>
+        <member name="F:Domain.Interface.Fakes.StubIConnectionStringRulesValidator.ItemGetConnectionStringValidatorName">
+            <summary>Définit le stub de IConnectionStringRulesValidator.get_Item(ConnectionStringValidatorName name)</summary>
         </member>
-        <member name="F:Domain.Interface.Fakes.StubIConnectionStringValidator.NameGet">
-            <summary>Définit le stub de IConnectionStringValidator.get_Name()</summary>
+        <member name="F:Domain.Interface.Fakes.StubIConnectionStringRulesValidator.NameGet">
+            <summary>Définit le stub de IConnectionStringRulesValidator.get_Name()</summary>
         </member>
-        <member name="F:Domain.Interface.Fakes.StubIConnectionStringValidator.ProjectGet">
-            <summary>Définit le stub de IConnectionStringValidator.get_Project()</summary>
+        <member name="F:Domain.Interface.Fakes.StubIConnectionStringRulesValidator.ProjectGet">
+            <summary>Définit le stub de IConnectionStringRulesValidator.get_Project()</summary>
         </member>
-        <member name="F:Domain.Interface.Fakes.StubIConnectionStringValidator.ProviderGet">
-            <summary>Définit le stub de IConnectionStringValidator.get_Provider()</summary>
+        <member name="F:Domain.Interface.Fakes.StubIConnectionStringRulesValidator.ProviderGet">
+            <summary>Définit le stub de IConnectionStringRulesValidator.get_Provider()</summary>
         </member>
-        <member name="M:Domain.Interface.Fakes.StubIConnectionStringValidator.global::System#Collections#Generic#IEnumerable{Domain#Interface#ConnectionStringValidatorName}#GetEnumerator">
+        <member name="M:Domain.Interface.Fakes.StubIConnectionStringRulesValidator.global::System#Collections#Generic#IEnumerable{Domain#Interface#ConnectionStringValidatorName}#GetEnumerator">
             <summary>Définit le stub de IEnumerable`1.GetEnumerator()</summary>
         </member>
-        <member name="M:Domain.Interface.Fakes.StubIConnectionStringValidator.global::System#Collections#IEnumerable#GetEnumerator">
+        <member name="M:Domain.Interface.Fakes.StubIConnectionStringRulesValidator.global::System#Collections#IEnumerable#GetEnumerator">
             <summary>Définit le stub de IEnumerable.GetEnumerator()</summary>
         </member>
-        <member name="P:Domain.Interface.Fakes.StubIConnectionStringValidator.d::Domain#Interface#IConnectionStringValidator#ConnectionString">
-            <summary>Définit le stub de IConnectionStringValidator.get_ConnectionString()</summary>
+        <member name="P:Domain.Interface.Fakes.StubIConnectionStringRulesValidator.d::Domain#Interface#IConnectionStringRulesValidator#ConnectionString">
+            <summary>Définit le stub de IConnectionStringRulesValidator.get_ConnectionString()</summary>
         </member>
-        <member name="P:Domain.Interface.Fakes.StubIConnectionStringValidator.d::Domain#Interface#IConnectionStringValidator#File">
-            <summary>Définit le stub de IConnectionStringValidator.get_File()</summary>
+        <member name="P:Domain.Interface.Fakes.StubIConnectionStringRulesValidator.d::Domain#Interface#IConnectionStringRulesValidator#File">
+            <summary>Définit le stub de IConnectionStringRulesValidator.get_File()</summary>
         </member>
-        <member name="P:Domain.Interface.Fakes.StubIConnectionStringValidator.Domain#Interface#IConnectionStringValidator#Item(Domain.Interface.ConnectionStringValidatorName)">
-            <summary>Définit le stub de IConnectionStringValidator.get_Item(ConnectionStringValidatorName name)</summary>
+        <member name="P:Domain.Interface.Fakes.StubIConnectionStringRulesValidator.Domain#Interface#IConnectionStringRulesValidator#Item(Domain.Interface.ConnectionStringValidatorName)">
+            <summary>Définit le stub de IConnectionStringRulesValidator.get_Item(ConnectionStringValidatorName name)</summary>
         </member>
-        <member name="P:Domain.Interface.Fakes.StubIConnectionStringValidator.d::Domain#Interface#IConnectionStringValidator#Name">
-            <summary>Définit le stub de IConnectionStringValidator.get_Name()</summary>
+        <member name="P:Domain.Interface.Fakes.StubIConnectionStringRulesValidator.d::Domain#Interface#IConnectionStringRulesValidator#Name">
+            <summary>Définit le stub de IConnectionStringRulesValidator.get_Name()</summary>
         </member>
-        <member name="P:Domain.Interface.Fakes.StubIConnectionStringValidator.d::Domain#Interface#IConnectionStringValidator#Project">
-            <summary>Définit le stub de IConnectionStringValidator.get_Project()</summary>
+        <member name="P:Domain.Interface.Fakes.StubIConnectionStringRulesValidator.d::Domain#Interface#IConnectionStringRulesValidator#Project">
+            <summary>Définit le stub de IConnectionStringRulesValidator.get_Project()</summary>
         </member>
-        <member name="P:Domain.Interface.Fakes.StubIConnectionStringValidator.d::Domain#Interface#IConnectionStringValidator#Provider">
-            <summary>Définit le stub de IConnectionStringValidator.get_Provider()</summary>
+        <member name="P:Domain.Interface.Fakes.StubIConnectionStringRulesValidator.d::Domain#Interface#IConnectionStringRulesValidator#Provider">
+            <summary>Définit le stub de IConnectionStringRulesValidator.get_Provider()</summary>
         </member>
         <member name="T:Domain.Interface.Fakes.StubICsprojExecutor">
             <summary>Type stub de Domain.Interface.ICsprojExecutor</summary>

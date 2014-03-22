@@ -57,6 +57,9 @@
     <Compile Include="Implementation\ConfigParseur.cs" />
     <Compile Include="Implementation\ConfigTransform.cs" />
     <Compile Include="Implementation\ConnectionString.cs" />
+    <Compile Include="Implementation\ConnectionStringItemForValidator.cs" />
+    <Compile Include="Implementation\ConnectionStringItemValidator.cs" />
+    <Compile Include="Interface\IConnectionStringValidator.cs" />
     <Compile Include="Interface\ConnectionStringValidatorName.cs" />
     <Compile Include="Implementation\ConnectionStringValidator.cs" />
     <Compile Include="Implementation\ConfigFinder.cs" />
@@ -68,7 +71,7 @@
     <Compile Include="Interface\IConfigParseurExecutor.cs" />
     <Compile Include="Interface\IConnectionStringItemForValidator.cs" />
     <Compile Include="Interface\IConnectionStringItemValidator.cs" />
-    <Compile Include="Interface\IConnectionStringValidator.cs" />
+    <Compile Include="Interface\IConnectionStringRulesValidator.cs" />
     <Compile Include="Interface\ICsprojExecutor.cs" />
     <Compile Include="Interface\IMessage.cs" />
     <Compile Include="Interface\IMessagingExecutor.cs" />
