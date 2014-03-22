@@ -42,7 +42,7 @@ namespace Domain.Implementation
                 return;
             }
 
-            // Todo : clean code. manage no case sesitive
+            // Todo : clean code, manage no case sensitive
             var eet = XElement.Load(configFile.FullName);
             var result = from connectionStrings in eet.Elements("connectionStrings")
                          from connectionString in connectionStrings.Descendants()

@@ -57,7 +57,7 @@
     <Compile Include="Implementation\ConfigParseur.cs" />
     <Compile Include="Implementation\ConfigTransform.cs" />
     <Compile Include="Implementation\ConnectionString.cs" />
-    <Compile Include="Interface\ConnectionStringValidatoName.cs" />
+    <Compile Include="Interface\ConnectionStringValidatorName.cs" />
     <Compile Include="Implementation\ConnectionStringValidator.cs" />
     <Compile Include="Implementation\ConfigFinder.cs" />
     <Compile Include="Implementation\CsprojFinder.cs" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using Domain.Interface;
 using Microsoft.Build.Evaluation;
 using Ninject.Extensions.Logging;
@@ -43,15 +44,17 @@ namespace Domain.Implementation
             {
                 var configFileTransfomeds = new List<IConfigFileTransfomed>();
 
-                foreach (var configFile in configFiles)
+
+                Parallel.ForEach(configFiles, (configFile) =>
                 {
                     if (!configFile.SourceFile.Exists)
                     {
                         _logger.Warn("SourceFile desn't exist.");
-                        continue;
+                        return;
                     }
 
                     var destFile = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+                    Directory.CreateDirectory(destFile);
                     var file = Path.Combine(destFile, configFile.SourceFile.Name);
 
                     if (configFile.TransformFile == null)
@@ -65,7 +68,7 @@ namespace Domain.Implementation
                         destFile))
                     {
                         _logger.Warn("unable to transform config file.");
-                        continue;
+                        return;
                     }
 
                     configFileTransfomeds.Add(
@@ -74,7 +77,7 @@ namespace Domain.Implementation
                             TransformFile = new FileInfo(file)
                         }
                         );
-                }
+                });
 
                 foreach (var configParseurExecutor in _configParseurExecutors)
                 {

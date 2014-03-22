@@ -7,21 +7,6 @@ namespace Domain.Implementation
 {
     internal class ConnectionStringValidator
     {
-        ///// <summary>
-        ///// Same 
-        ///// </summary>
-        ///// <param name="compareFrom"></param>
-        ///// <param name="compareTo"></param>
-        ///// <returns></returns>
-        //public bool AllNameMatch(
-        //    IEnumerable<IConnectionStringItemForValidator> compareFrom,
-        //    IEnumerable<IConnectionStringItemForValidator> compareTo)
-        //{
-        //    return compareFrom.Select(x => x.Name)
-        //        .Intersect(compareTo.Select(y => y.Name))
-        //        .Count() == compareFrom.Count();
-        //}
-
         /// <summary>
         /// Check if connectionString match and return the value
         /// </summary>
@@ -35,7 +20,17 @@ namespace Domain.Implementation
             where T : IConnectionStringValidator
         {
             return from rule in rules
-                   where allCriteriaMatch(rule, connectionStringItem)
+                   where allCriteriaMatch(rule, new[]
+                   {
+                       ConnectionStringValidatorName.File,
+                       ConnectionStringValidatorName.Name, 
+                       ConnectionStringValidatorName.Project
+                   }, connectionStringItem)
+                   where !allCriteriaMatch(rule, new []
+                   {
+                       ConnectionStringValidatorName.ConnectionString,
+                       ConnectionStringValidatorName.ProviderName 
+                   }, connectionStringItem)
                    select rule;
         }
 
@@ -43,11 +38,14 @@ namespace Domain.Implementation
         /// Check items.
         /// </summary>
         /// <param name="itemValidator"></param>
+        /// <param name="itemValidatorNameFilter"></param>
         /// <param name="realValue"></param>
         /// <returns></returns>
-        private bool allCriteriaMatch(IConnectionStringValidator itemValidator, IConnectionStringItemForValidator realValue)
+        private bool allCriteriaMatch(IConnectionStringValidator itemValidator, 
+            IEnumerable<ConnectionStringValidatorName> itemValidatorNameFilter, 
+            IConnectionStringItemForValidator realValue)
         {
-            return (from val in itemValidator
+            return (from val in itemValidator.Intersect(itemValidatorNameFilter)
                     where
                         !itemValidator[val].Match.HasValue ||
                         Regex.Match(realValue[val], itemValidator[val].Regex, RegexOptions.IgnoreCase).Success ==
