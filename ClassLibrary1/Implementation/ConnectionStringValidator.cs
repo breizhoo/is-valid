@@ -21,7 +21,7 @@ namespace Domain.Implementation
         {
             return from rule in rules
                    where AllCriteriaMatch(rule, connectionStringItem, true)
-                   where !AllCriteriaMatch(rule, connectionStringItem, false)
+                   where AllCriteriaMatch(rule, connectionStringItem, false)
                    select rule;
         }
 
@@ -37,10 +37,14 @@ namespace Domain.Implementation
             IConnectionStringItemForValidator realValue,
                         bool criteria)
         {
-            return (from val in FilterItem(itemRulesValidator, criteria)
+            var listItems = FilterItem(itemRulesValidator, criteria).ToList();
+            if (listItems.Count == 0)
+                return criteria;
+
+            return (from val in listItems
                     let item = itemRulesValidator[val]
                     where Regex.Match(realValue[val], item.Regex, RegexOptions.IgnoreCase).Success == item.Match
-                    select true).Count() == itemRulesValidator.Count();
+                    select true).Count() == listItems.Count;
         }
 
         private static IEnumerable<ConnectionStringValidatorName> FilterItem(
@@ -49,8 +53,8 @@ namespace Domain.Implementation
         {
             return itemRulesValidator.Where(x => 
                 itemRulesValidator[x] != null && 
-                itemRulesValidator[x].Active && 
-                itemRulesValidator[x].Active == criteria);
+                itemRulesValidator[x].Active &&
+                itemRulesValidator[x].Criteria == criteria);
         }
 
 

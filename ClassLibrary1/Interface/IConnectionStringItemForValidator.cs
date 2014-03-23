@@ -2,7 +2,15 @@
 
 namespace Domain.Interface
 {
-    public interface IConnectionStringItemForValidator : IEnumerable<ConnectionStringValidatorName>
+    public interface IConnectionStringItemForValidator : IEnumerable<ConnectionStringValidatorName>, IConnectionStringItemForValidatorSimple
+    {
+        string this[ConnectionStringValidatorName name]
+        {
+            get;
+        }
+    }
+
+    public interface IConnectionStringItemForValidatorSimple
     {
         string Project { get; }
 
@@ -13,10 +21,5 @@ namespace Domain.Interface
         string Name { get; }
 
         string ConnectionString { get; }
-
-        string this[ConnectionStringValidatorName name]
-        {
-            get;
-        }
     }
 }

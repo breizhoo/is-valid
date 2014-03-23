@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -59,6 +61,7 @@
     <Compile Include="Implementation\ConnectionString.cs" />
     <Compile Include="Implementation\ConnectionStringItemForValidator.cs" />
     <Compile Include="Implementation\ConnectionStringItemValidator.cs" />
+    <Compile Include="Implementation\ConnectionStringRulesValidatorService.cs" />
     <Compile Include="Interface\IConnectionStringValidator.cs" />
     <Compile Include="Interface\ConnectionStringValidatorName.cs" />
     <Compile Include="Implementation\ConnectionStringValidator.cs" />

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Domain.Implementation;
 using Domain.Interface;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -17,6 +12,7 @@ namespace UnitTestProject1
     {
         private IConnectionStringValidator _connectionStringRulesValidator;
         private IConnectionStringItemForValidator _connectionString;
+        private ConnectionStringRulesValidator _ruleDontMatch;
 
         [TestInitialize]
         public void TestInitializer()
@@ -32,6 +28,24 @@ namespace UnitTestProject1
                                     Project = "",
                                     Provider = "System.Data.SqlClient"
                                 };
+            _ruleDontMatch = new ConnectionStringRulesValidator()
+            {
+                Name = new ConnectionStringItemValidator()
+                {
+                    Active = true,
+                    Criteria = true,
+                    Regex = _connectionString.Name + "__",
+                    Match = true
+                },
+                ConnectionString = new ConnectionStringItemValidator()
+                {
+                    Active = true,
+                    Criteria = false,
+                    Regex = ".*",
+                    Match = true
+                }
+
+            };
         }
 
         [TestMethod]
@@ -39,7 +53,7 @@ namespace UnitTestProject1
         {
             var rule = new ConnectionStringRulesValidator();
             Check.That(
-                _connectionStringRulesValidator.IsValid(_connectionString, new[] { rule })
+                _connectionStringRulesValidator.IsValid(_connectionString, new[] {rule}).ToList()
                 ).IsEmpty();
         }
 
@@ -54,32 +68,13 @@ namespace UnitTestProject1
         [TestMethod]
         public void ConnectionStringValidator_Parse_MatchName_Success()
         {
-            var rule1 = new ConnectionStringRulesValidator()
-            {
-                Name = new ConnectionStringItemValidator()
-                       {
-                           Active = true,
-                           Criteria = true,
-                           Regex = _connectionString.Name + "__",
-                           Match = true
-                       },
-                ConnectionString = new ConnectionStringItemValidator()
-                                   {
-                                       Active = true,
-                                       Criteria = false,
-                                       Regex = ".*",
-                                       Match = true
-                                   }
-
-            };
-
             var rule2 = new ConnectionStringRulesValidator()
             {
                 Name = new ConnectionStringItemValidator()
                 {
                     Active = true,
                     Criteria = true,
-                    Regex = _connectionString.Name,
+                    Regex = ".*"+_connectionString.Name + ".*",
                     Match = true
                 },
                 ConnectionString = new ConnectionStringItemValidator()
@@ -91,9 +86,72 @@ namespace UnitTestProject1
                 }
 
             };
-            var rulesMatch = _connectionStringRulesValidator.IsValid(_connectionString, new[] { rule1, rule2 }).ToList();
+            var rulesMatch = _connectionStringRulesValidator.IsValid(_connectionString, new[] { _ruleDontMatch, rule2 }).ToList();
             Check.That(rulesMatch).HasSize(1);
             Check.That(rulesMatch.First().Id).IsEqualTo(rule2.Id);
+        }
+
+        [TestMethod]
+        public void ConnectionStringValidator_Parse_MatchConnectionString_Success()
+        {
+            var rule2 = new ConnectionStringRulesValidator()
+            {
+                Name = new ConnectionStringItemValidator()
+                {
+                    Active = true,
+                    Criteria = true,
+                    Regex = ".*",
+                    Match = true
+                },
+                ConnectionString = new ConnectionStringItemValidator()
+                {
+                    Active = true,
+                    Criteria = false,
+                    Regex = "Data Source=\\(LocalDb\\)\\v11\\.0.*",
+                    Match = true
+                }
+
+            };
+            var rulesMatch = _connectionStringRulesValidator.IsValid(_connectionString, new[] { _ruleDontMatch, rule2 }).ToList();
+            Check.That(rulesMatch).HasSize(1);
+            Check.That(rulesMatch.First().Id).IsEqualTo(rule2.Id);
+        }
+
+        [TestMethod]
+        public void ConnectionStringValidator_Parse_MatchConnectionStringWithoutCriteria_Success()
+        {
+            var rule2 = new ConnectionStringRulesValidator()
+            {
+                ConnectionString = new ConnectionStringItemValidator()
+                {
+                    Active = true,
+                    Criteria = false,
+                    Regex = "Data Source=\\(LocalDb\\)\\v11\\.0.*",
+                    Match = true
+                }
+
+            };
+            var rulesMatch = _connectionStringRulesValidator.IsValid(_connectionString, new[] { _ruleDontMatch, rule2 }).ToList();
+            Check.That(rulesMatch).HasSize(1);
+            Check.That(rulesMatch.First().Id).IsEqualTo(rule2.Id);
+        }
+
+        [TestMethod]
+        public void ConnectionStringValidator_Parse_MatchConnectionStringWithoutCondition_EmptyResult()
+        {
+            var rule2 = new ConnectionStringRulesValidator()
+            {
+                Name = new ConnectionStringItemValidator()
+                {
+                    Active = true,
+                    Criteria = true,
+                    Regex = ".*",
+                    Match = true
+                }
+            };
+
+            var rulesMatch = _connectionStringRulesValidator.IsValid(_connectionString, new[] { _ruleDontMatch, rule2 }).ToList();
+            Check.That(rulesMatch).IsEmpty();
         }
     }
 }
