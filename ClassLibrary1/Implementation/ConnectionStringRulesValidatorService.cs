@@ -8,12 +8,24 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 using Domain.Interface;
+using Ninject.Extensions.Logging;
 
 namespace Domain.Implementation
 {
 
     internal class ConnectionStringRulesValidatorService : IConnectionStringRulesValidatorService
     {
+        private readonly IApplicationVariables _applicationVariables;
+        private readonly ILogger _logger;
+
+        public ConnectionStringRulesValidatorService(
+            IApplicationVariables applicationVariables,
+            ILogger logger)
+        {
+            _logger = logger;
+            _applicationVariables = applicationVariables;
+        }
+
         public IConnectionStringRulesValidatorSimple GetNew()
         {
             return new ConnectionStringRulesValidatorSimple();
@@ -34,22 +46,18 @@ namespace Domain.Implementation
                         return (ConnectionStringRulesValidatorSimple[]) dcs.ReadObject(reader, true);
                     }
                 }
-              
-
             }
-            catch
+            catch(Exception ex)
             {
-                // todo : ???
+                _logger.Error(ex, "Error on getting data.");
             }
             return Enumerable.Empty<IConnectionStringRulesValidatorSimple>();
         }
 
         public void Delete(IConnectionStringRulesValidatorSimple connectionStringRulesValidator)
         {
-
             var allDatas = Get().ToList();
             allDatas.RemoveAll(x => x.Id == connectionStringRulesValidator.Id);
-
             Save(allDatas);
         }
 
@@ -64,7 +72,7 @@ namespace Domain.Implementation
 
         private DirectoryInfo GetDirectory()
         {
-            var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            var appData = _applicationVariables.GetApplicationDataDirectory();
             return new DirectoryInfo(Path.Combine(appData, "OlivierAppli"));
         }
 
@@ -78,17 +86,25 @@ namespace Domain.Implementation
 
         public void Save(IEnumerable<IConnectionStringRulesValidatorSimple> connectionStringRulesValidators)
         {
-            var file = GetFile();
-            var dcs = new DataContractSerializer(typeof(ConnectionStringRulesValidatorSimple[]));
-
-            using (var stream = file.Open(FileMode.OpenOrCreate))
+            try
             {
-                using (XmlDictionaryWriter writer =
-                    XmlDictionaryWriter.CreateTextWriter(stream, Encoding.UTF8))
+                var file = GetFile();
+                var dcs = new DataContractSerializer(typeof (ConnectionStringRulesValidatorSimple[]));
+
+                using (var stream = file.Open(FileMode.OpenOrCreate))
                 {
-                    writer.WriteStartDocument();
-                    dcs.WriteObject(writer, connectionStringRulesValidators.Cast<ConnectionStringRulesValidatorSimple>().ToArray());
+                    using (XmlDictionaryWriter writer =
+                        XmlDictionaryWriter.CreateTextWriter(stream, Encoding.UTF8))
+                    {
+                        writer.WriteStartDocument();
+                        dcs.WriteObject(writer,
+                            connectionStringRulesValidators.Cast<ConnectionStringRulesValidatorSimple>().ToArray());
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, "Error on saving data.");
             }
         }
     }

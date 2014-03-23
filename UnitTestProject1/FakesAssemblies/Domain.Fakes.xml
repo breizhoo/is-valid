@@ -4,6 +4,30 @@
         <name>Domain.Fakes</name>
     </assembly>
     <members>
+        <member name="T:Domain.Interface.Fakes.StubIApplicationVariables">
+            <summary>Type stub de Domain.Interface.IApplicationVariables</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubIApplicationVariables.#ctor">
+            <summary>Initialise une nouvelle instance de type StubIApplicationVariables</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubIApplicationVariables.d::Domain#Interface#IApplicationVariables#GetApplicationDataDirectory">
+            <summary>Définit le stub de IApplicationVariables.GetApplicationDataDirectory()</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubIApplicationVariables.d::Domain#Interface#IApplicationVariables#GetApplicationName">
+            <summary>Définit le stub de IApplicationVariables.GetApplicationName()</summary>
+        </member>
+        <member name="M:Domain.Interface.Fakes.StubIApplicationVariables.d::Domain#Interface#IApplicationVariables#GetTempDirectory">
+            <summary>Définit le stub de IApplicationVariables.GetTempDirectory()</summary>
+        </member>
+        <member name="F:Domain.Interface.Fakes.StubIApplicationVariables.GetApplicationDataDirectory">
+            <summary>Définit le stub de IApplicationVariables.GetApplicationDataDirectory()</summary>
+        </member>
+        <member name="F:Domain.Interface.Fakes.StubIApplicationVariables.GetApplicationName">
+            <summary>Définit le stub de IApplicationVariables.GetApplicationName()</summary>
+        </member>
+        <member name="F:Domain.Interface.Fakes.StubIApplicationVariables.GetTempDirectory">
+            <summary>Définit le stub de IApplicationVariables.GetTempDirectory()</summary>
+        </member>
         <member name="T:Domain.Interface.Fakes.StubICsprojExecutor">
             <summary>Type stub de Domain.Interface.ICsprojExecutor</summary>
         </member>

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Domain.Implementation;
 using Domain.Interface;
+using Domain.Interface.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NFluent;
+using Ninject.Extensions.Logging.Fakes;
 
 namespace UnitTestProject1
 {
@@ -14,11 +12,18 @@ namespace UnitTestProject1
     public class ConnectionStringRulesValidatorServiceTest
     {
         private IConnectionStringRulesValidatorService _connectionStringRulesValidatorService;
+        private IApplicationVariables _applicationVariables;
 
         [TestInitialize]
         public void TestInitializer()
         {
-            _connectionStringRulesValidatorService = new ConnectionStringRulesValidatorService();
+            _applicationVariables = new StubIApplicationVariables()
+                                         {
+                                             GetApplicationDataDirectory = () => "",
+                                             GetApplicationName = () => "ApplicationName"
+                                         };
+            var iLogger = new StubILogger();
+            _connectionStringRulesValidatorService = new ConnectionStringRulesValidatorService(_applicationVariables, iLogger);
         }
 
         [TestMethod]
@@ -27,16 +32,11 @@ namespace UnitTestProject1
             var item = _connectionStringRulesValidatorService.GetNew();
             _connectionStringRulesValidatorService.Save(item);
             var allItems = _connectionStringRulesValidatorService.Get().ToList();
-            Check.That(
-                allItems.Count(x => x.Id == item.Id)
-                ).IsEqualTo(1);
+            Check.That(allItems.Count(x => x.Id == item.Id)).IsEqualTo(1);
+
             _connectionStringRulesValidatorService.Delete(allItems.First());
-
             allItems = _connectionStringRulesValidatorService.Get().ToList();
-            Check.That(
-                allItems.Where(x => x.Id == item.Id)
-                ).IsEmpty();
-
+            Check.That(allItems.Where(x => x.Id == item.Id)).IsEmpty();
         }
     }
 }

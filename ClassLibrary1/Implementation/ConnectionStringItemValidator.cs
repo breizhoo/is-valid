@@ -6,6 +6,17 @@ namespace Domain.Implementation
     [DataContract]
     public class ConnectionStringItemValidator : IConnectionStringItemValidator
     {
+        public ConnectionStringItemValidator(IConnectionStringItemValidator copy)
+        {
+            Regex = copy.Regex;
+            Match = copy.Match;
+            Criteria = copy.Criteria;
+            Active = copy.Active;
+        }
+
+        public ConnectionStringItemValidator()
+        {
+        }
 
         [DataMember]
         public string Regex { get; set; }

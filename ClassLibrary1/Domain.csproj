@@ -62,6 +62,8 @@
     <Compile Include="Implementation\ConnectionStringItemForValidator.cs" />
     <Compile Include="Implementation\ConnectionStringItemValidator.cs" />
     <Compile Include="Implementation\ConnectionStringRulesValidatorService.cs" />
+    <Compile Include="Implementation\ApplicationVariables.cs" />
+    <Compile Include="Interface\IApplicationVariables.cs" />
     <Compile Include="Interface\IConnectionStringValidator.cs" />
     <Compile Include="Interface\ConnectionStringValidatorName.cs" />
     <Compile Include="Implementation\ConnectionStringValidator.cs" />

@@ -38,6 +38,16 @@ namespace Domain.Implementation
     [DataContract]
     internal class ConnectionStringRulesValidator : ConnectionStringItemBase<IConnectionStringItemValidator>, IConnectionStringRulesValidator
     {
+        public ConnectionStringRulesValidator(IConnectionStringRulesValidatorSimple copy)
+        {
+            Id               = copy.Id;
+            Project          = copy.Project;
+            File             = copy.File;
+            Provider         = copy.Provider;
+            Name             = copy.Name;
+            ConnectionString = copy.ConnectionString;
+        }
+
         public ConnectionStringRulesValidator()
         {
             Id = Guid.NewGuid();
@@ -66,7 +76,7 @@ namespace Domain.Implementation
     [DataContract]
     internal abstract class ConnectionStringItemBase<T>
     {
-        private Dictionary<ConnectionStringValidatorName, T> _items;
+        private readonly Dictionary<ConnectionStringValidatorName, T> _items;
 
         protected ConnectionStringItemBase()
         {
