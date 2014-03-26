@@ -98,7 +98,7 @@ namespace Domain.Implementation
                                 TypeError = TypeError.Error,
                                 Message = string.Format(
                                 "The rules with the name {0} has bean declanched on the connection string named {1} on project {2}",
-                                rule.Name, connectionString.Name, project.FullPath)
+                                rule.RuleName, connectionString.Name, project.FullPath)
                             });
                         }
                     });

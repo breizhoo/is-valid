@@ -38,5 +38,27 @@ namespace UnitTestProject1
             allItems = _connectionStringRulesValidatorService.Get().ToList();
             Check.That(allItems.Where(x => x.Id == item.Id)).IsEmpty();
         }
+
+        [TestMethod]
+        public void test()
+        {
+            var item = _connectionStringRulesValidatorService.GetNew();
+            item.RuleName = "Test_Rules";
+            item.Name = new ConnectionStringItemValidator
+            {
+                Active = true,
+                Regex = ".*",
+                Criteria = false,
+                Match = true
+            };
+
+            _connectionStringRulesValidatorService.Save(item);
+            var allItems = _connectionStringRulesValidatorService.Get().ToList();
+            Check.That(allItems.Count(x => x.Id == item.Id)).IsEqualTo(1);
+
+            _connectionStringRulesValidatorService.Delete(allItems.First());
+            allItems = _connectionStringRulesValidatorService.Get().ToList();
+            Check.That(allItems.Where(x => x.Id == item.Id)).IsEmpty();
+        }
     }
 }

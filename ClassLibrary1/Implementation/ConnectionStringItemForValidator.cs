@@ -14,6 +14,9 @@ namespace Domain.Implementation
         {
             Id = Guid.NewGuid();
         }
+        
+        [DataMember]
+        public string RuleName { get; set; }
 
         [DataMember]
         public Guid Id { get; set; }
@@ -36,7 +39,7 @@ namespace Domain.Implementation
 
 
     [DataContract]
-    internal class ConnectionStringRulesValidator : ConnectionStringItemBase<IConnectionStringItemValidator>, IConnectionStringRulesValidator
+    internal class ConnectionStringRulesValidator : ConnectionStringItemBase<IConnectionStringItemValidator>, IConnectionStringRulesValidator, IConnectionStringRulesValidatorSimple
     {
         public ConnectionStringRulesValidator(IConnectionStringRulesValidatorSimple copy)
         {
@@ -46,12 +49,19 @@ namespace Domain.Implementation
             Provider         = copy.Provider;
             Name             = copy.Name;
             ConnectionString = copy.ConnectionString;
+            RuleName         = copy.RuleName;
         }
 
         public ConnectionStringRulesValidator()
         {
             Id = Guid.NewGuid();
         }
+
+        /// <summary>
+        /// Name
+        /// </summary>
+        [DataMember]
+        public string RuleName { get; set; }
 
         /// <summary>
         /// Name
@@ -65,7 +75,7 @@ namespace Domain.Implementation
         }
     }
 
-    internal class ConnectionStringItemForValidator : ConnectionStringItemBase<string>, IConnectionStringItemForValidator
+    internal class ConnectionStringItemForValidator : ConnectionStringItemBase<string>, IConnectionStringItemForValidator, IConnectionStringItemForValidatorSimple
     {
         public new IEnumerator GetEnumerator()
         {

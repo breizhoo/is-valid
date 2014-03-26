@@ -15,14 +15,16 @@ namespace Domain.Interface
     {
         Guid Id { get; }
 
-        IConnectionStringItemValidator Project { get; }
+        string RuleName { get; set; }
 
-        IConnectionStringItemValidator File { get; }
+        IConnectionStringItemValidator Project { get; set; }
 
-        IConnectionStringItemValidator Provider { get; }
+        IConnectionStringItemValidator File { get; set; }
 
-        IConnectionStringItemValidator Name { get; }
+        IConnectionStringItemValidator Provider { get; set; }
 
-        IConnectionStringItemValidator ConnectionString { get; }
+        IConnectionStringItemValidator Name { get; set; }
+
+        IConnectionStringItemValidator ConnectionString { get; set; }
     }
 }
