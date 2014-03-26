@@ -15,6 +15,7 @@ namespace Domain.Implementation
 
     internal class ConnectionStringRulesValidatorService : IConnectionStringRulesValidatorService
     {
+        private static object locker = new Object();
         private readonly IApplicationVariables _applicationVariables;
         private readonly ILogger _logger;
 
@@ -35,19 +36,24 @@ namespace Domain.Implementation
         {
             try
             {
-                var file = GetFile();
-                var dcs = new DataContractSerializer(typeof(ConnectionStringRulesValidatorSimple[]));
-
-                using (var stream = file.Open(FileMode.OpenOrCreate))
+                lock (locker)
                 {
-                    using (XmlDictionaryReader reader =
-                        XmlDictionaryReader.CreateTextReader(stream, new XmlDictionaryReaderQuotas()))
-                    {
-                        return (ConnectionStringRulesValidatorSimple[]) dcs.ReadObject(reader, true);
-                    }
+                    var file = GetFile();
+                    var dcs = new DataContractSerializer(typeof(ConnectionStringRulesValidatorSimple[]));
+
+                    if (file.Exists)
+                        using (var stream = file.Open(FileMode.OpenOrCreate))
+                        {
+                            using (XmlDictionaryReader reader =
+                                XmlDictionaryReader.CreateTextReader(stream, new XmlDictionaryReaderQuotas()))
+                            {
+                                return (ConnectionStringRulesValidatorSimple[])dcs.ReadObject(reader, true);
+                            }
+                        }
                 }
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.Error(ex, "Error on getting data.");
             }
@@ -88,17 +94,20 @@ namespace Domain.Implementation
         {
             try
             {
-                var file = GetFile();
-                var dcs = new DataContractSerializer(typeof (ConnectionStringRulesValidatorSimple[]));
-
-                using (var stream = file.Open(FileMode.OpenOrCreate))
+                lock (locker)
                 {
-                    using (XmlDictionaryWriter writer =
-                        XmlDictionaryWriter.CreateTextWriter(stream, Encoding.UTF8))
+                    var file = GetFile();
+                    var dcs = new DataContractSerializer(typeof(ConnectionStringRulesValidatorSimple[]));
+
+                    using (var stream = file.Open(FileMode.OpenOrCreate))
                     {
-                        writer.WriteStartDocument();
-                        dcs.WriteObject(writer,
-                            connectionStringRulesValidators.Cast<ConnectionStringRulesValidatorSimple>().ToArray());
+                        using (XmlDictionaryWriter writer =
+                            XmlDictionaryWriter.CreateTextWriter(stream, Encoding.UTF8))
+                        {
+                            writer.WriteStartDocument();
+                            dcs.WriteObject(writer,
+                                connectionStringRulesValidators.Cast<ConnectionStringRulesValidatorSimple>().ToArray());
+                        }
                     }
                 }
             }
