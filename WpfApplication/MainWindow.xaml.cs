@@ -23,22 +23,22 @@ namespace WpfApplication
     /// </summary>
     public partial class MainWindow : Window
     {
-        internal SearchConfig SearchConfig { get; set; }
+        public SearchConfig SearchingConfig { get; set; }
 
         public ObservableCollection<SearchResult> Collection
         {
-            get { return SearchConfig; }
+            get { return SearchingConfig; }
         }
 
         public MainWindow()
         {
-            SearchConfig = ServiceLocator.Current.GetInstance<SearchConfig>();
+            SearchingConfig = ServiceLocator.Current.GetInstance<SearchConfig>();
             InitializeComponent();
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            SearchConfig.Launch(txtDirectorySearch.Text);
+            SearchingConfig.Launch(txtDirectorySearch.Text);
 
         }
 

@@ -106,7 +106,9 @@ namespace Domain.Implementation
                         {
                             writer.WriteStartDocument();
                             dcs.WriteObject(writer,
-                                connectionStringRulesValidators.Cast<ConnectionStringRulesValidatorSimple>().ToArray());
+                                connectionStringRulesValidators
+                                .Select(x => new ConnectionStringRulesValidatorSimple(x))
+                                .ToArray());
                         }
                     }
                 }

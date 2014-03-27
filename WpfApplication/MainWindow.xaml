@@ -13,32 +13,42 @@
             </MenuItem>
             <MenuItem Header="_HELP" />
         </Menu>
-        <DockPanel LastChildFill="True" DockPanel.Dock="Top">
-            <Button DockPanel.Dock="Right" HorizontalAlignment="Right"  Content="Launch" Width="75" Click="ButtonBase_OnClick" Margin="8" />
-            <TextBox HorizontalAlignment="Stretch" x:Name="txtDirectorySearch" TextWrapping="Wrap" Text="C:\Users\Breizhoo\Documents\visual studio 2012\Projects\ClassLibrary1" Margin="8" />
-        </DockPanel>
-        <ListView x:Name="listView" Margin="8" ItemsSource="{Binding Collection}" >
-            <!--<ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock x:Name="DataItemName" Text="{Binding Name}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>-->
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Name"  
+        <TabControl  DataContext="{Binding SearchingConfig}"  >
+            <TabItem Header="Search" >
+                <DockPanel LastChildFill="True">
+                    <DockPanel LastChildFill="True" DockPanel.Dock="Top">
+                        <Button DockPanel.Dock="Right" HorizontalAlignment="Right"  Content="Launch" Width="75" Click="ButtonBase_OnClick" Margin="8" />
+                        <TextBox HorizontalAlignment="Stretch" x:Name="txtDirectorySearch" TextWrapping="Wrap" Text="C:\Users\Breizhoo\Documents\visual studio 2012\Projects\ClassLibrary1" Margin="8" />
+                    </DockPanel>
+                    <ListView x:Name="listView" Margin="8" ItemsSource="{Binding Path=SearchValues}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name"  
             DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Project"  
+                                <GridViewColumn Header="Project"  
             DisplayMemberBinding="{Binding Project}" />
-                    <GridViewColumn  Header="Connection String" 
+                                <GridViewColumn  Header="Connection String" 
             DisplayMemberBinding="{Binding DataSource}" />
-                    <GridViewColumn Header="Chemin"  
+                                <GridViewColumn Header="Chemin"  
             DisplayMemberBinding="{Binding Chemin}" />
-                </GridView>
+                            </GridView>
 
-            </ListView.View>
+                        </ListView.View>
+                    </ListView>
 
-        </ListView>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Rules">
+                <ListView x:Name="listViewRules" Margin="8" ItemsSource="{Binding Path=Rules}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding RuleName}" />
+                        </GridView>
 
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+        </TabControl>
 
 
     </DockPanel>

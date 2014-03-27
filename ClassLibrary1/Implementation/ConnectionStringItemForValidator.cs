@@ -10,6 +10,17 @@ namespace Domain.Implementation
     [KnownType(typeof(ConnectionStringItemValidator))]
     public class ConnectionStringRulesValidatorSimple : IConnectionStringRulesValidatorSimple
     {
+        public ConnectionStringRulesValidatorSimple(IConnectionStringRulesValidatorSimple copy)
+        {
+            RuleName = copy.RuleName;
+            Id = copy.Id;
+            Project = new ConnectionStringItemValidator(copy.Project);
+            File = new ConnectionStringItemValidator(copy.File);
+            Provider = new ConnectionStringItemValidator(copy.Provider);
+            Name = new ConnectionStringItemValidator(copy.Name);
+            ConnectionString = new ConnectionStringItemValidator(copy.ConnectionString);
+        }
+
         public ConnectionStringRulesValidatorSimple()
         {
             Id = Guid.NewGuid();
