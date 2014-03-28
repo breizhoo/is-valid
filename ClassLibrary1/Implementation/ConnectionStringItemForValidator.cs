@@ -10,10 +10,24 @@ namespace Domain.Implementation
     [KnownType(typeof(ConnectionStringItemValidator))]
     public class ConnectionStringRulesValidatorSimple : IConnectionStringRulesValidatorSimple
     {
+        public ConnectionStringRulesValidatorSimple(IConnectionStringRulesValidatorSimple copy)
+        {
+            RuleName = copy.RuleName;
+            Id = copy.Id;
+            Project = new ConnectionStringItemValidator(copy.Project);
+            File = new ConnectionStringItemValidator(copy.File);
+            Provider = new ConnectionStringItemValidator(copy.Provider);
+            Name = new ConnectionStringItemValidator(copy.Name);
+            ConnectionString = new ConnectionStringItemValidator(copy.ConnectionString);
+        }
+
         public ConnectionStringRulesValidatorSimple()
         {
             Id = Guid.NewGuid();
         }
+        
+        [DataMember]
+        public string RuleName { get; set; }
 
         [DataMember]
         public Guid Id { get; set; }
@@ -36,7 +50,7 @@ namespace Domain.Implementation
 
 
     [DataContract]
-    internal class ConnectionStringRulesValidator : ConnectionStringItemBase<IConnectionStringItemValidator>, IConnectionStringRulesValidator
+    internal class ConnectionStringRulesValidator : ConnectionStringItemBase<IConnectionStringItemValidator>, IConnectionStringRulesValidator, IConnectionStringRulesValidatorSimple
     {
         public ConnectionStringRulesValidator(IConnectionStringRulesValidatorSimple copy)
         {
@@ -46,12 +60,19 @@ namespace Domain.Implementation
             Provider         = copy.Provider;
             Name             = copy.Name;
             ConnectionString = copy.ConnectionString;
+            RuleName         = copy.RuleName;
         }
 
         public ConnectionStringRulesValidator()
         {
             Id = Guid.NewGuid();
         }
+
+        /// <summary>
+        /// Name
+        /// </summary>
+        [DataMember]
+        public string RuleName { get; set; }
 
         /// <summary>
         /// Name
@@ -65,7 +86,7 @@ namespace Domain.Implementation
         }
     }
 
-    internal class ConnectionStringItemForValidator : ConnectionStringItemBase<string>, IConnectionStringItemForValidator
+    internal class ConnectionStringItemForValidator : ConnectionStringItemBase<string>, IConnectionStringItemForValidator, IConnectionStringItemForValidatorSimple
     {
         public new IEnumerator GetEnumerator()
         {

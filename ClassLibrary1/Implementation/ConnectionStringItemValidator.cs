@@ -8,6 +8,9 @@ namespace Domain.Implementation
     {
         public ConnectionStringItemValidator(IConnectionStringItemValidator copy)
         {
+            if (copy == null)
+                return;
+
             Regex = copy.Regex;
             Match = copy.Match;
             Criteria = copy.Criteria;

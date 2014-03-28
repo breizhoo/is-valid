@@ -33,6 +33,9 @@ namespace BootStrapper
             kernel.Bind<IConfigFindExecutor>().To<ConfigFindExecutor>();
             kernel.Bind<IConfigParseurExecutor>().To<ConfigParseur>();
             kernel.Bind<IMessagingSender, IMessagingReceiver>().To<MessagingExecutor>().InSingletonScope();
+            kernel.Bind<IConnectionStringRulesValidatorService>().To<ConnectionStringRulesValidatorService>();
+            kernel.Bind<IConnectionStringValidator>().To<ConnectionStringValidator>();
+            kernel.Bind<IApplicationVariables>().To<ApplicationVariables>();
 
             if (_configuration != null)
                 _configuration(kernel);
