@@ -30,24 +30,31 @@ namespace Domain.Implementation
         /// <param name="fileInfoFind">Callback</param>
         public void DirSearch(string sDir, Action<FileInfo> fileInfoFind)
         {
-            var files = new DirectoryInfo(sDir)
-                .GetFiles("*.csproj", SearchOption.AllDirectories);
+            try
+            {
+                var files = new DirectoryInfo(sDir)
+                    .GetFiles("*.csproj", SearchOption.AllDirectories);
 
-            _logger.Info("{0} csproj finded : {1}", files.Length, string.Join(", ", files.Select(x => x.Name)));
+                _logger.Info("{0} csproj finded : {1}", files.Length, string.Join(", ", files.Select(x => x.Name)));
 
-            Parallel.ForEach(files,
-                (fileinfo) =>
-                {
-                    try
+                Parallel.ForEach(files,
+                    (fileinfo) =>
                     {
-                        fileInfoFind(fileinfo);
+                        try
+                        {
+                            fileInfoFind(fileinfo);
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.Error(ex, "Exception on callback of DirSearch.");
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        _logger.Error(ex, "Exception on callback of DirSearch.");
-                    }
-                }
-                );
+                    );
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, "Exception on DirSearch.");
+            }
         }
     }
 }
