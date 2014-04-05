@@ -2,6 +2,8 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Windows;
 using Domain.Implementation;
@@ -18,23 +20,55 @@ namespace WpfApplication
         public string DataSource { get; set; }
     }
 
+    public interface IMapperTo<Tto>
+    {
+        Tto To();
+    }
+
+    public interface IMapperFrom<Tfrom, Tto>
+    {
+        
+
+        IMapperTo<Tto> From(Tfrom source);
+    }
+
     public class ConnectionRules
     {
         public ConnectionRules(IConnectionStringRulesValidatorSimple connectionStringRulesValidatorSimple)
         {
-            Id = connectionStringRulesValidatorSimple.Id;
-            Name = connectionStringRulesValidatorSimple.RuleName;
-
-            ConnectionStringActive = connectionStringRulesValidatorSimple.ConnectionString.Active;
-            ConnectionStringCriteria = connectionStringRulesValidatorSimple.ConnectionString.Criteria;
-            ConnectionStringMatch = connectionStringRulesValidatorSimple.ConnectionString.Match;
-            ConnectionStringRegex = connectionStringRulesValidatorSimple.ConnectionString.Regex;
-
-            NameActive = connectionStringRulesValidatorSimple.Name.Active;
-            NameCriteria = connectionStringRulesValidatorSimple.Name.Criteria;
-            NameMatch = connectionStringRulesValidatorSimple.Name.Match;
-            NameRegex = connectionStringRulesValidatorSimple.Name.Regex;
+            Map(connectionStringRulesValidatorSimple, this);
         }
+
+        private ConnectionRules()
+        {
+            
+        }
+
+        public static ConnectionRules Map(
+            IConnectionStringRulesValidatorSimple @from,
+            ConnectionRules to = null)
+        {
+            to = to ?? new ConnectionRules();
+            to.Id = @from.Id;
+            to.Name = @from.RuleName;
+
+            to.ConnectionStringActive = @from.ConnectionString.Active;
+            to.ConnectionStringCriteria = @from.ConnectionString.Criteria;
+            to.ConnectionStringMatch = @from.ConnectionString.Match;
+            to.ConnectionStringRegex = @from.ConnectionString.Regex;
+
+            to.NameActive = @from.Name.Active;
+            to.NameCriteria = @from.Name.Criteria;
+            to.NameMatch = @from.Name.Match;
+            to.NameRegex = @from.Name.Regex;
+            return to;
+        }
+
+        //private static IConnectionStringRulesValidatorSimple MapTo(ConnectionRules from, IConnectionStringRulesValidatorSimple to )
+        //{
+
+        //}
+        
 
         [Category("Inforamtion")]
         public Guid Id { get; private set; }
@@ -94,6 +128,7 @@ namespace WpfApplication
         private readonly IMessagingReceiver _message;
         public ObservableCollection<SearchResult> _searchValues = new ObservableCollection<SearchResult>();
         public ObservableCollection<ConnectionRules> _rules = new ObservableCollection<ConnectionRules>();
+        private readonly IConnectionStringRulesValidatorService _connectionStringRulesValidatorService;
 
         public ObservableCollection<SearchResult> SearchValues
         {
@@ -115,12 +150,22 @@ namespace WpfApplication
             IConnectionStringRulesValidatorService connectionStringRulesValidatorService
             )
         {
+            _connectionStringRulesValidatorService = connectionStringRulesValidatorService;
             _message = message;
             _csprojFinder = csprojFinder;
             _csprojParseur = csprojParseur;
             var items = connectionStringRulesValidatorService.Get();
             foreach (var connectionStringRulesValidatorSimple in items)
                 Rules.Add(new ConnectionRules(connectionStringRulesValidatorSimple));
+        }
+
+        public void CreateNewRules()
+        {
+            var elm = new ConnectionRules(_connectionStringRulesValidatorService.GetNew())
+                      {
+                          Name = "New to"
+                      };
+            Rules.Add(elm);
         }
 
         public async void Launch(string directoriesSearch)

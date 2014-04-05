@@ -24,6 +24,11 @@ namespace Domain.Implementation
         public ConnectionStringRulesValidatorSimple()
         {
             Id = Guid.NewGuid();
+            Project = new ConnectionStringItemValidator();
+            File = new ConnectionStringItemValidator();
+            Provider = new ConnectionStringItemValidator();
+            Name = new ConnectionStringItemValidator();
+            ConnectionString = new ConnectionStringItemValidator();
         }
         
         [DataMember]

@@ -13,7 +13,7 @@ namespace Domain.Interface
 
     public interface IConnectionStringRulesValidatorSimple 
     {
-        Guid Id { get; }
+        Guid Id { get; set; }
 
         string RuleName { get; set; }
 

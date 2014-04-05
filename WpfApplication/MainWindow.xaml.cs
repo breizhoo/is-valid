@@ -67,6 +67,11 @@ namespace WpfApplication
             formSettings.Save();
 
         }
+
+        private void addNewRules(object sender, RoutedEventArgs e)
+        {
+            SearchingConfig.CreateNewRules();
+        }
     }
 
     //Application settings wrapper class 
