@@ -3,7 +3,7 @@ using Domain.Implementation;
 using Domain.Interface;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NFluent;
-using Ninject.Extensions.Logging.Fakes;
+using Transverse.Api.Fakes;
 
 namespace UnitTestProject1
 {

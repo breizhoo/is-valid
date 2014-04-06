@@ -7,8 +7,8 @@
     <ProjectGuid>{2B399CDA-9C11-4CFC-9927-A1C2704316E2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Domain</RootNamespace>
-    <AssemblyName>Domain</AssemblyName>
+    <RootNamespace>Domain.Implementation</RootNamespace>
+    <AssemblyName>Domain.Implementation</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,12 +34,6 @@
     <Reference Include="Microsoft.Web.XmlTransform">
       <HintPath>..\packages\Microsoft.Web.Xdt.1.0.0\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject.Extensions.Logging">
-      <HintPath>..\packages\Ninject.Extensions.Logging.3.0.1.0\lib\net45-full\Ninject.Extensions.Logging.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -64,6 +58,7 @@
     <Compile Include="Implementation\ConnectionStringRulesValidatorService.cs" />
     <Compile Include="Implementation\ApplicationVariables.cs" />
     <Compile Include="Interface\IApplicationVariables.cs" />
+    <Compile Include="Interface\IConnectionStringItemForValidatorSimple.cs" />
     <Compile Include="Interface\IConnectionStringValidator.cs" />
     <Compile Include="Interface\ConnectionStringValidatorName.cs" />
     <Compile Include="Implementation\ConnectionStringValidator.cs" />
@@ -75,10 +70,8 @@
     <Compile Include="Interface\IConfigFindExecutor.cs" />
     <Compile Include="Interface\IConfigParseurExecutor.cs" />
     <Compile Include="Interface\IConnectionStringItemForValidator.cs" />
-    <Compile Include="Interface\IConnectionStringItemValidator.cs" />
     <Compile Include="Interface\IConnectionStringRulesValidator.cs" />
     <Compile Include="Interface\ICsprojExecutor.cs" />
-    <Compile Include="Interface\IMessage.cs" />
     <Compile Include="Interface\IMessagingExecutor.cs" />
     <Compile Include="Implementation\Messaging.cs" />
     <Compile Include="Implementation\MessagingExecutor.cs" />
@@ -88,15 +81,22 @@
     <Compile Include="Interface\IConfigParseurConnectionString.cs" />
     <Compile Include="Interface\IConfigTransform.cs" />
     <Compile Include="Interface\IConfigTransformOutput.cs" />
-    <Compile Include="Interface\ICsprojFinder.cs" />
     <Compile Include="Interface\ICsprojFinderOutput.cs" />
-    <Compile Include="Interface\ICsprojParseur.cs" />
     <Compile Include="Interface\ICsprojParseurOutput.cs" />
-    <Compile Include="Interface\TypeError.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Api\Domain.Api.csproj">
+      <Project>{88e3aca5-3d74-457c-af54-b3f2f46dd1c9}</Project>
+      <Name>Domain.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Transverse.Api\Transverse.Api.csproj">
+      <Project>{c97f61d1-cb4c-4051-92b7-89c4d88e30e5}</Project>
+      <Name>Transverse.Api</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

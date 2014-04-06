@@ -35,24 +35,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Domain.Fakes">
-      <HintPath>FakesAssemblies\Domain.Fakes.dll</HintPath>
+    <Reference Include="Domain.Api.Fakes">
+      <HintPath>FakesAssemblies\Domain.Api.Fakes.dll</HintPath>
+    </Reference>
+    <Reference Include="Domain.Implementation.Fakes">
+      <HintPath>FakesAssemblies\Domain.Implementation.Fakes.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Build" />
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="NFluent">
       <HintPath>..\packages\NFluent.1.1.0.0\lib\net40\NFluent.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\packages\Ninject.3.0.2-unstable-9066\lib\net45-full\Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject.Extensions.Logging">
-      <HintPath>..\packages\Ninject.Extensions.Logging.3.0.1.0\lib\net45-full\Ninject.Extensions.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject.Extensions.Logging.3.0.0.0.Fakes">
-      <HintPath>FakesAssemblies\Ninject.Extensions.Logging.3.0.0.0.Fakes.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="Transverse.Api.Fakes">
+      <HintPath>FakesAssemblies\Transverse.Api.Fakes.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -74,8 +71,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Fakes Include="Fakes\Domain.fakes" />
-    <Fakes Include="Fakes\Ninject.Extensions.Logging.fakes" />
+    <Fakes Include="Fakes\Transverse.Api.fakes" />
+    <Fakes Include="Fakes\Domain.Api.fakes" />
+    <Fakes Include="Fakes\Domain.Implementation.fakes" />
     <None Include="packages.config" />
     <None Include="Web.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -88,9 +86,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\Domain.csproj">
+    <ProjectReference Include="..\ClassLibrary1\Domain.Implementation.csproj">
       <Project>{2b399cda-9c11-4cfc-9927-a1c2704316e2}</Project>
-      <Name>Domain</Name>
+      <Name>Domain.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Api\Domain.Api.csproj">
+      <Project>{88e3aca5-3d74-457c-af54-b3f2f46dd1c9}</Project>
+      <Name>Domain.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Transverse.Api\Transverse.Api.csproj">
+      <Project>{c97f61d1-cb4c-4051-92b7-89c4d88e30e5}</Project>
+      <Name>Transverse.Api</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

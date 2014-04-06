@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Domain.Interface;
-using Ninject.Extensions.Logging;
+using Transverse.Api;
 
 namespace Domain.Implementation
 {

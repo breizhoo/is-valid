@@ -3,9 +3,9 @@ using System.Linq;
 using Domain.Implementation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
-using Ninject.Extensions.Logging.Fakes;
 using NFluent;
 using Domain.Interface;
+using Transverse.Api.Fakes;
 
 namespace UnitTestProject1
 {

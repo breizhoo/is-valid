@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using Domain.Interface;
 using Microsoft.Build.Evaluation;
-using Ninject.Extensions.Logging;
+using Transverse.Api;
 
 namespace Domain.Implementation
 {

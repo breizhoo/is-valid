@@ -1,6 +1,5 @@
 ﻿using System;
-using Domain.Implementation;
-using Domain.Interface;
+using System.Collections.Generic;
 using Microsoft.Practices.ServiceLocation;
 using Ninject;
 using Ninject.Modules;
@@ -23,19 +22,12 @@ namespace BootStrapper
         {
             log4net.Config.XmlConfigurator.Configure();
             var settings = new NinjectSettings { LoadExtensions = false };
-            IKernel kernel = new StandardKernel(settings, new INinjectModule[] { new Log4NetModule() });
 
-            // Domain configuration
-            kernel.Bind<IConfigTransform>().To<ConfigTransform>();
-            kernel.Bind<ICsprojFinder>().To<CsprojFinder>();
-            kernel.Bind<ICsprojParseur>().To<CsprojParseur>();
-            kernel.Bind<ICsprojExecutor>().To<ConfigFinder>();
-            kernel.Bind<IConfigFindExecutor>().To<ConfigFindExecutor>();
-            kernel.Bind<IConfigParseurExecutor>().To<ConfigParseur>();
-            kernel.Bind<IMessagingSender, IMessagingReceiver>().To<MessagingExecutor>().InSingletonScope();
-            kernel.Bind<IConnectionStringRulesValidatorService>().To<ConnectionStringRulesValidatorService>();
-            kernel.Bind<IConnectionStringValidator>().To<ConnectionStringValidator>();
-            kernel.Bind<IApplicationVariables>().To<ApplicationVariables>();
+            var ninjectModules = new List<INinjectModule> ();
+            ninjectModules.AddRange(Domain.BootStrapper.BootStrapper.GetModules());
+            ninjectModules.AddRange(Transverse.BootStrapper.BootStrapper.GetModules());
+
+            IKernel kernel = new StandardKernel(settings, ninjectModules.ToArray());
 
             if (_configuration != null)
                 _configuration(kernel);

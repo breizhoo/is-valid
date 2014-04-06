@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Domain.Interface;
 using Microsoft.Build.Evaluation;
-using Ninject.Extensions.Logging;
+using Transverse.Api;
 
 namespace Domain.Implementation
 {

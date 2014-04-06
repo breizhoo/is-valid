@@ -2,7 +2,7 @@
 using System.IO;
 using Domain.Interface;
 using Microsoft.Web.XmlTransform;
-using Ninject.Extensions.Logging;
+using Transverse.Api;
 
 namespace Domain.Implementation
 {

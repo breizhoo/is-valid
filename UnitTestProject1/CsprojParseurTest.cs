@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading;
 using System.Threading.Tasks;
 using NFluent;
-using Ninject.Extensions.Logging.Fakes;
+using Transverse.Api.Fakes;
 
 namespace UnitTestProject1
 {

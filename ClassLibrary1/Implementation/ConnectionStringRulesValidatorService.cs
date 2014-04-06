@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 using Domain.Interface;
-using Ninject.Extensions.Logging;
+using Transverse.Api;
 
 namespace Domain.Implementation
 {
@@ -118,20 +118,5 @@ namespace Domain.Implementation
                 _logger.Error(ex, "Error on saving data.");
             }
         }
-    }
-
-    public interface IConnectionStringRulesValidatorService
-    {
-        IConnectionStringRulesValidatorSimple GetNew();
-
-        IEnumerable<IConnectionStringRulesValidatorSimple> Get();
-
-        void Delete(IConnectionStringRulesValidatorSimple connectionStringRulesValidator);
-
-        void Save(IConnectionStringRulesValidatorSimple connectionStringRulesValidator);
-
-        void Save(IEnumerable<IConnectionStringRulesValidatorSimple> connectionStringRulesValidators);
-
-
     }
 }

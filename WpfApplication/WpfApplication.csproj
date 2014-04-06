@@ -85,6 +85,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConnectionRules.cs" />
     <Compile Include="SearchConfig.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -132,9 +133,9 @@
       <Project>{fd56991d-64be-4e7d-a495-3d4944bf6676}</Project>
       <Name>BootStrapper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ClassLibrary1\Domain.csproj">
-      <Project>{2b399cda-9c11-4cfc-9927-a1c2704316e2}</Project>
-      <Name>Domain</Name>
+    <ProjectReference Include="..\Domain.Api\Domain.Api.csproj">
+      <Project>{88e3aca5-3d74-457c-af54-b3f2f46dd1c9}</Project>
+      <Name>Domain.Api</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
