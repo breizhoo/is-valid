@@ -25,14 +25,8 @@
                     <ListView x:Name="listView" Margin="8" ItemsSource="{Binding Path=SearchValues}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Name"  
-            DisplayMemberBinding="{Binding Name}" />
-                                <GridViewColumn Header="Project"  
-            DisplayMemberBinding="{Binding Project}" />
-                                <GridViewColumn  Header="Connection String" 
-            DisplayMemberBinding="{Binding DataSource}" />
-                                <GridViewColumn Header="Chemin"  
-            DisplayMemberBinding="{Binding Chemin}" />
+                                <GridViewColumn Header="Message"  
+            DisplayMemberBinding="{Binding Message}" />
                             </GridView>
 
                         </ListView.View>
@@ -62,7 +56,11 @@
                         <GridSplitter Grid.Column ="1" Background="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" Width="1"
                 HorizontalAlignment="Right" VerticalAlignment="Stretch"/>
                     <DockPanel LastChildFill="True"  Grid.Column ="2" >
-                        <Button  Content="Add" Width="75" HorizontalAlignment="Right" Margin="8" DockPanel.Dock="Bottom" Click="addNewRules" />
+                        <StackPanel  DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button  Content="Add" Width="75" HorizontalAlignment="Right" Margin="8"  Click="addNewRules" />
+                        <Button  Content="Delete" Width="75" HorizontalAlignment="Right" Margin="8"  Click="deleteRules" />
+                        <Button  Content="Save" Width="75" HorizontalAlignment="Right" Margin="8"  Click="saveRules" />
+                        </StackPanel>
                         <ListView x:Name="listViewRules" Margin="8"  ItemsSource="{Binding Path=Rules}" >
                             <ListView.View>
                                 <GridView>

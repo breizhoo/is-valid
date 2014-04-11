@@ -72,6 +72,17 @@ namespace WpfApplication
         {
             SearchingConfig.CreateNewRules();
         }
+
+        private void deleteRules(object sender, RoutedEventArgs e)
+        {
+            if (listViewRules.SelectedItem != null)
+                SearchingConfig.DeleteRules((ConnectionRules)listViewRules.SelectedItem);
+        }
+
+        private void saveRules(object sender, RoutedEventArgs e)
+        {
+            SearchingConfig.SaveRules();
+        }
     }
 
     //Application settings wrapper class 

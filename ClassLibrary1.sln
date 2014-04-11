@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Api", "Domain.Api\Do
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{DEA61D4F-EB5E-42B9-8026-03BB2BB86C70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication.Infrastructure", "WpfApplication.Infrastructure\WpfApplication.Infrastructure.csproj", "{D70EB77B-D4D0-4005-9EAE-A92EBD859945}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,6 +100,12 @@ Global
 		{88E3ACA5-3D74-457C-AF54-B3F2F46DD1C9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{88E3ACA5-3D74-457C-AF54-B3F2F46DD1C9}.test|Any CPU.ActiveCfg = Release|Any CPU
 		{88E3ACA5-3D74-457C-AF54-B3F2F46DD1C9}.test|Any CPU.Build.0 = Release|Any CPU
+		{D70EB77B-D4D0-4005-9EAE-A92EBD859945}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D70EB77B-D4D0-4005-9EAE-A92EBD859945}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D70EB77B-D4D0-4005-9EAE-A92EBD859945}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D70EB77B-D4D0-4005-9EAE-A92EBD859945}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D70EB77B-D4D0-4005-9EAE-A92EBD859945}.test|Any CPU.ActiveCfg = Release|Any CPU
+		{D70EB77B-D4D0-4005-9EAE-A92EBD859945}.test|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,5 +120,6 @@ Global
 		{4B679662-531E-4B37-BE5F-0A3F16D9C7A1} = {82C810F7-18C6-48E9-9670-B1334C8CF0FD}
 		{FA65FE34-F4E2-4DF4-AC28-3CDBA0E768C0} = {82C810F7-18C6-48E9-9670-B1334C8CF0FD}
 		{71C57846-BF52-414E-901B-499F7365164E} = {DEA61D4F-EB5E-42B9-8026-03BB2BB86C70}
+		{D70EB77B-D4D0-4005-9EAE-A92EBD859945} = {DEA61D4F-EB5E-42B9-8026-03BB2BB86C70}
 	EndGlobalSection
 EndGlobal

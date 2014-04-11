@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Domain.Implementation;
@@ -7,28 +8,7 @@ using Domain.Interface;
 
 namespace WpfApplication
 {
-    public class SearchResult
-    {
-        public string Project { get; set; }
-        public string Chemin { get; set; }
-        public string Name { get; set; }
-        public string ProviderName { get; set; }
-        public string DataSource { get; set; }
-    }
-
-    public interface IMapperTo<Tto>
-    {
-        Tto To();
-    }
-
-    public interface IMapperFrom<Tfrom, Tto>
-    {
-        
-
-        IMapperTo<Tto> From(Tfrom source);
-    }
-
-    public class SearchConfig : ObservableCollection<SearchResult>
+    public partial class SearchConfig : ObservableCollection<SearchResult>
     {
         private readonly ICsprojFinder _csprojFinder;
         private readonly ICsprojParseur _csprojParseur;
@@ -66,6 +46,11 @@ namespace WpfApplication
                 Rules.Add(new ConnectionRules(connectionStringRulesValidatorSimple));
         }
 
+        public void SaveRules()
+        {
+            _connectionStringRulesValidatorService.Save(Rules.Select(x => x.Convert()).ToArray());
+        }
+
         public void CreateNewRules()
         {
             var elm = new ConnectionRules(_connectionStringRulesValidatorService.GetNew())
@@ -73,6 +58,11 @@ namespace WpfApplication
                           Name = "New to"
                       };
             Rules.Add(elm);
+        }
+
+        public void DeleteRules(ConnectionRules rule)
+        {
+            Rules.Remove(rule);
         }
 
         public async void Launch(string directoriesSearch)
@@ -103,7 +93,10 @@ namespace WpfApplication
             {
                 var searchResult = new SearchResult
                 {
-                    Name = message.Message
+                    Message = message.Message,
+                    ErrorCode = message.ErrorCode,
+                    Id = message.Id,
+                    TypeError = (TypeError)message.TypeError
                 };
 
 

@@ -87,6 +87,8 @@
     </ApplicationDefinition>
     <Compile Include="ConnectionRules.cs" />
     <Compile Include="SearchConfig.cs" />
+    <Compile Include="SearchResult.cs" />
+    <Compile Include="TypeError.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
