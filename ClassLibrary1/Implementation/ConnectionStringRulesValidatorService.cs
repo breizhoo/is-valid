@@ -15,7 +15,7 @@ namespace Domain.Implementation
 
     internal class ConnectionStringRulesValidatorService : IConnectionStringRulesValidatorService
     {
-        private static object locker = new Object();
+        private static readonly object locker = new Object();
         private readonly IApplicationVariables _applicationVariables;
         private readonly ILogger _logger;
 
@@ -42,7 +42,7 @@ namespace Domain.Implementation
                     var dcs = new DataContractSerializer(typeof(ConnectionStringRulesValidatorSimple[]));
 
                     if (file.Exists)
-                        using (var stream = file.Open(FileMode.OpenOrCreate))
+                        using (var stream = file.Open(FileMode.Open))
                         {
                             using (XmlDictionaryReader reader =
                                 XmlDictionaryReader.CreateTextReader(stream, new XmlDictionaryReaderQuotas()))
@@ -99,8 +99,12 @@ namespace Domain.Implementation
                     var file = GetFile();
                     var dcs = new DataContractSerializer(typeof(ConnectionStringRulesValidatorSimple[]));
 
+                    if(file.Exists)
+                        file.Delete();
                     using (var stream = file.Open(FileMode.OpenOrCreate))
                     {
+                        stream.SetLength(0);
+                        stream.Flush();
                         using (XmlDictionaryWriter writer =
                             XmlDictionaryWriter.CreateTextWriter(stream, Encoding.UTF8))
                         {
@@ -110,6 +114,8 @@ namespace Domain.Implementation
                                 .Select(x => new ConnectionStringRulesValidatorSimple(x))
                                 .ToArray());
                         }
+                        stream.Flush();
+                        stream.Close();
                     }
                 }
             }
