@@ -1,6 +1,9 @@
+using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using Domain.Implementation;
@@ -8,7 +11,7 @@ using Domain.Interface;
 
 namespace WpfApplication
 {
-    public partial class SearchConfig : ObservableCollection<SearchResult>
+    public partial class SearchConfig : ObservableCollection<SearchResult>, INotifyPropertyChanged
     {
         private readonly ICsprojFinder _csprojFinder;
         private readonly ICsprojParseur _csprojParseur;
@@ -16,6 +19,17 @@ namespace WpfApplication
         public ObservableCollection<SearchResult> _searchValues = new ObservableCollection<SearchResult>();
         public ObservableCollection<ConnectionRules> _rules = new ObservableCollection<ConnectionRules>();
         private readonly IConnectionStringRulesValidatorService _connectionStringRulesValidatorService;
+        private string _stateMessage;
+
+        public string StateMessage
+        {
+            get { return _stateMessage; }
+            set
+            {
+                _stateMessage = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         public ObservableCollection<SearchResult> SearchValues
         {
@@ -64,11 +78,25 @@ namespace WpfApplication
         {
             Rules.Remove(rule);
         }
-
+        public void CloneRules(ConnectionRules rule)
+        {
+            var elm = new ConnectionRules(_connectionStringRulesValidatorService.GetNew(rule.Convert()));
+            elm.Name += " (copie)";
+            Rules.Add(elm);
+        }
+        
         public async void Launch(string directoriesSearch)
         {
             Clear();
-            await Task.Run(() => _csprojFinder.DirSearch(directoriesSearch, new ForCsProjFind(this).CsProjFind));
+            SearchValues.Clear();
+
+            await Task.Run(() =>
+            {
+                StateMessage = "Search begin.";
+                _csprojFinder.DirSearch(directoriesSearch, new ForCsProjFind(this).CsProjFind);
+                StateMessage = "Search finish.";
+            });
+
         }
 
         private class ForCsProjFind
@@ -86,7 +114,7 @@ namespace WpfApplication
                     return;
 
                 _searchConfig._message.ReceiveMessage += ReceiveMessage;
-                _searchConfig._csprojParseur.ParseAsync(fileInfo.FullName);
+                _searchConfig._csprojParseur.Parse(fileInfo.FullName);
             }
 
             private void ReceiveMessage(IMessage message)
@@ -99,11 +127,23 @@ namespace WpfApplication
                     TypeError = (TypeError)message.TypeError
                 };
 
-
-
                 Application.Current.Dispatcher.Invoke(() =>
                     _searchConfig.SearchValues.Add(searchResult));
             }
+
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        // This method is called by the Set accessor of each property.
+        // The CallerMemberName attribute that is applied to the optional propertyName
+        // parameter causes the property name of the caller to be substituted as an argument.
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
     }
 }

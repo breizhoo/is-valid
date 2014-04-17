@@ -4,7 +4,12 @@
         Title="MainWindow" Height="451" Width="765"
         Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
-    <DockPanel LastChildFill="True">
+    <DockPanel LastChildFill="True" DataContext="{Binding SearchingConfig}">
+        <StatusBar  DockPanel.Dock="Bottom" >
+            <StatusBarItem>
+                <TextBlock Name="LblCursorPosition" Text="{Binding Path=StateMessage}" />
+            </StatusBarItem>
+        </StatusBar>
         <Menu IsMainMenu="True" DockPanel.Dock="Top" Margin="0" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
             <MenuItem Header="_FILE" >
                 <MenuItem Header="_Parameters..." />
@@ -13,7 +18,7 @@
             </MenuItem>
             <MenuItem Header="_HELP" />
         </Menu>
-        <TabControl  DataContext="{Binding SearchingConfig}"  >
+        <TabControl    >
             <TabItem Header="Search" >
                 <DockPanel LastChildFill="True">
                     <DockPanel LastChildFill="True" DockPanel.Dock="Top">
@@ -26,7 +31,8 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Message"  
-            DisplayMemberBinding="{Binding Message}" />
+            DisplayMemberBinding="{Binding Message}" Width="{Binding RelativeSource={RelativeSource FindAncestor, 
+             AncestorType=ListView}, Path=ActualWidth}" />
                             </GridView>
 
                         </ListView.View>
@@ -58,13 +64,15 @@
                     <DockPanel LastChildFill="True"  Grid.Column ="2" >
                         <StackPanel  DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
                             <Button  Content="Add" Width="75" HorizontalAlignment="Right" Margin="8"  Click="addNewRules" />
-                        <Button  Content="Delete" Width="75" HorizontalAlignment="Right" Margin="8"  Click="deleteRules" />
+                            <Button  Content="Clone" Width="75" HorizontalAlignment="Right" Margin="8"  Click="cloneSelectedRules" />
+                            <Button  Content="Delete" Width="75" HorizontalAlignment="Right" Margin="8"  Click="deleteRules" />
                         <Button  Content="Save" Width="75" HorizontalAlignment="Right" Margin="8"  Click="saveRules" />
                         </StackPanel>
                         <ListView x:Name="listViewRules" Margin="8"  ItemsSource="{Binding Path=Rules}" >
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="{Binding RelativeSource={RelativeSource FindAncestor, 
+             AncestorType=ListView}, Path=ActualWidth}" />
                                 </GridView>
 
                             </ListView.View>

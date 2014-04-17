@@ -37,7 +37,7 @@ namespace Domain.Implementation
 
                 _logger.Info("{0} csproj finded : {1}", files.Length, string.Join(", ", files.Select(x => x.Name)));
 
-                Parallel.ForEach(files,
+                var parallele = Parallel.ForEach(files,
                     (fileinfo) =>
                     {
                         try
@@ -50,6 +50,7 @@ namespace Domain.Implementation
                         }
                     }
                     );
+                
             }
             catch (Exception ex)
             {

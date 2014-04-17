@@ -83,6 +83,12 @@ namespace WpfApplication
         {
             SearchingConfig.SaveRules();
         }
+
+        private void cloneSelectedRules(object sender, RoutedEventArgs e)
+        {
+            if (listViewRules.SelectedItem != null)
+                SearchingConfig.CloneRules((ConnectionRules)listViewRules.SelectedItem);
+        }
     }
 
     //Application settings wrapper class 

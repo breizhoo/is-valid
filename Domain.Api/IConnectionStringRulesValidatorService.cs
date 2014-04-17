@@ -7,6 +7,8 @@ namespace Domain.Implementation
     {
         IConnectionStringRulesValidatorSimple GetNew();
 
+        IConnectionStringRulesValidatorSimple GetNew(IConnectionStringRulesValidatorSimple copy);
+
         IEnumerable<IConnectionStringRulesValidatorSimple> Get();
 
         void Delete(IConnectionStringRulesValidatorSimple connectionStringRulesValidator);

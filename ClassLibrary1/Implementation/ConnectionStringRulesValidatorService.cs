@@ -30,6 +30,12 @@ namespace Domain.Implementation
             return new ConnectionStringRulesValidatorSimple();
         }
 
+        public IConnectionStringRulesValidatorSimple GetNew(IConnectionStringRulesValidatorSimple copy)
+        {
+            var cnx = new ConnectionStringRulesValidatorSimple(copy);
+            cnx.Id = Guid.NewGuid();
+            return cnx;
+        }
         public IEnumerable<IConnectionStringRulesValidatorSimple> Get()
         {
             try
