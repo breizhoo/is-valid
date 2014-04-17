@@ -14,8 +14,7 @@ namespace Domain.Implementation
         /// <param name="configFile"></param>
         internal ConfigFileTransfomed(IConfigFile configFile)
         {
-            SourceFile = configFile.SourceFile;
-            TransformFile = configFile.TransformFile;
+            SourceFile = configFile.TransformFile??configFile.SourceFile;
         }
 
         /// <summary>

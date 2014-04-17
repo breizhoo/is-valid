@@ -4,9 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
-using System.Xml.Serialization;
 using Domain.Interface;
 using Transverse.Api;
 
@@ -15,7 +13,7 @@ namespace Domain.Implementation
 
     internal class ConnectionStringRulesValidatorService : IConnectionStringRulesValidatorService
     {
-        private static readonly object locker = new Object();
+        private static readonly object Locker = new Object();
         private readonly IApplicationVariables _applicationVariables;
         private readonly ILogger _logger;
 
@@ -36,7 +34,7 @@ namespace Domain.Implementation
         {
             try
             {
-                lock (locker)
+                lock (Locker)
                 {
                     var file = GetFile();
                     var dcs = new DataContractSerializer(typeof(ConnectionStringRulesValidatorSimple[]));
@@ -94,7 +92,7 @@ namespace Domain.Implementation
         {
             try
             {
-                lock (locker)
+                lock (Locker)
                 {
                     var file = GetFile();
                     var dcs = new DataContractSerializer(typeof(ConnectionStringRulesValidatorSimple[]));
@@ -114,7 +112,6 @@ namespace Domain.Implementation
                                 .Select(x => new ConnectionStringRulesValidatorSimple(x))
                                 .ToArray());
                         }
-                        stream.Flush();
                         stream.Close();
                     }
                 }

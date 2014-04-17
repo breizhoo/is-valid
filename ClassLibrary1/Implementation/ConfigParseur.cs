@@ -39,6 +39,13 @@ namespace Domain.Implementation
             _messagingSender = messagingSender;
         }
 
+        private string GetFromXElement(XElement connectionString, string key)
+        {
+            if (connectionString.Attribute(key) != null)
+                return connectionString.Attribute(key).Value;
+            return "";
+        }
+
         /// <summary>
         /// Parse the file.
         /// </summary>
@@ -58,19 +65,13 @@ namespace Domain.Implementation
                    from connectionString in connectionStrings.Descendants()
                    select new ConnectionStringItemForValidator
                    {
-                       Name = connectionString.Attribute("name").Value,
-                       Provider = connectionString.Attribute("providerName").Value,
-                       ConnectionString = connectionString.Attribute("connectionString").Value,
+                       Name = GetFromXElement(connectionString, "name"),
+                       Provider = GetFromXElement(connectionString, "providerName"),
+                       ConnectionString = GetFromXElement(connectionString, "connectionString"),
                        Project = project.FullPath,
-                       File = (configFileTransfomed.TransformFile ?? configFileTransfomed.SourceFile)
+                       File = (configFileTransfomed.SourceFile)
                        .FullName
                    };
-            //select (IConnectionStringItem)new ConnectionStringItem
-            //{
-            //    Name = connectionString.Attribute("name").Value,
-            //    ProviderName = connectionString.Attribute("providerName").Value,
-            //    ConnectionString = connectionString.Attribute("connectionString").Value,
-            //};
         }
 
         /// <summary>

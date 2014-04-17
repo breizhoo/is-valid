@@ -49,7 +49,7 @@ namespace Domain.Implementation
                 {
                     if (!configFile.SourceFile.Exists)
                     {
-                        _logger.Warn("SourceFile desn't exist.");
+                        _logger.Warn("SourceFile desn't exist : " + configFile.SourceFile.FullName);
                         return;
                     }
 
@@ -67,7 +67,7 @@ namespace Domain.Implementation
                         configFile.TransformFile.FullName,
                         destFile))
                     {
-                        _logger.Warn("unable to transform config file.");
+                        _logger.Warn("unable to transform config file : " + configFile.TransformFile.FullName);
                         return;
                     }
 
